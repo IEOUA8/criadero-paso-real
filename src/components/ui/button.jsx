@@ -1,0 +1,48 @@
+import { cn } from '@/lib/utils';
+import { Slot } from '@radix-ui/react-slot';
+import { cva } from 'class-variance-authority';
+import React from 'react';
+
+const buttonVariants = cva(
+	'inline-flex items-center justify-center gap-2 rounded-xl text-sm font-semibold ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none',
+	{
+		variants: {
+			variant: {
+				default:
+          'bg-gradient-to-br from-[#d6ba69] via-[#c8a94b] to-[#b8941b] text-[#0B0B0B] shadow-[0_10px_24px_rgba(200,169,75,0.35)] hover:shadow-[0_14px_30px_rgba(200,169,75,0.42)] hover:-translate-y-0.5',
+				destructive:
+          'bg-destructive text-destructive-foreground hover:bg-destructive/90 shadow-md',
+				outline:
+          'border border-white/70 bg-white/65 text-[#111827] backdrop-blur-md shadow-[0_8px_20px_rgba(15,23,42,0.08)] hover:bg-white/90 hover:border-[#C8A94B]/45 hover:text-[#0B0B0B] hover:-translate-y-0.5',
+				secondary:
+          'bg-[#111827] text-white shadow-md hover:bg-[#1f2937] hover:-translate-y-0.5',
+				ghost: 'hover:bg-white/65 hover:text-[#0B0B0B] backdrop-blur-sm',
+				link: 'text-primary underline-offset-4 hover:underline',
+			},
+			size: {
+				default: 'h-11 px-5 py-2.5',
+				sm: 'h-9 rounded-lg px-3',
+				lg: 'h-12 rounded-xl px-8',
+				icon: 'h-10 w-10',
+			},
+		},
+		defaultVariants: {
+			variant: 'default',
+			size: 'default',
+		},
+	},
+);
+
+const Button = React.forwardRef(({ className, variant, size, asChild = false, ...props }, ref) => {
+	const Comp = asChild ? Slot : 'button';
+	return (
+		<Comp
+			className={cn(buttonVariants({ variant, size, className }))}
+			ref={ref}
+			{...props}
+		/>
+	);
+});
+Button.displayName = 'Button';
+
+export { Button, buttonVariants };

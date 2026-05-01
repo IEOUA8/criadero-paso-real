@@ -1,0 +1,209 @@
+CRIADERO PASO REAL - ADMIN CREDENTIALS SECURITY NOTES
+======================================================
+
+⚠️  CRITICAL SECURITY REMINDERS ⚠️
+
+1. CREDENTIAL STORAGE
+   - Store admin credentials ONLY in secure password managers
+   - Recommended: 1Password, LastPass, Bitwarden, Dashlane
+   - NEVER store in plain text files, emails, or chat messages
+   - NEVER commit credentials to Git repositories
+
+2. PASSWORD REQUIREMENTS
+   - Initial password: GenerarContraseña123!@#
+   - MUST BE CHANGED on first login
+   - New password requirements:
+     * Minimum 16 characters
+     * Mix of uppercase and lowercase letters
+     * Include numbers and special characters
+     * Avoid dictionary words or personal information
+     * Never reuse passwords from other services
+
+3. ACCESS CONTROL
+   - Admin access should be granted to MINIMUM number of people
+   - Create separate accounts for each admin user
+   - NEVER share admin credentials between team members
+   - Immediately revoke access when team members leave
+
+4. AUDIT TRAIL
+   - Review Supabase authentication logs weekly
+   - Check for:
+     * Failed login attempts
+     * Login times and locations
+     * Unusual activity patterns
+   - Location: Supabase Dashboard → Authentication → Logs
+
+5. INCIDENT RESPONSE
+   - If credentials are compromised:
+     1. Immediately change admin password
+     2. Review all recent admin actions in database
+     3. Check for unauthorized changes
+     4. Revoke refresh tokens in Supabase
+     5. Document the incident
+   
+   - To revoke all sessions:
+     Go to SQL Editor and run:
+     DELETE FROM auth.sessions WHERE user_id = 'admin-uuid-here';
+
+6. BACKUP ACCESS
+   - Create a secondary admin account for emergency access
+   - Store backup credentials in SEPARATE secure location
+   - Document backup account creation date
+   - Test backup account quarterly
+
+7. TWO-FACTOR AUTHENTICATION
+   - Enable 2FA if available in your Supabase plan
+   - Use authenticator apps (Google Authenticator, Authy)
+   - Store backup codes in password manager
+   - NEVER use SMS-based 2FA as primary method
+
+8. REGULAR SECURITY REVIEWS
+   - Monthly: Review access logs and failed login attempts
+   - Quarterly: Audit all admin accounts and permissions
+   - Annually: Full security assessment and password rotation
+   - After incidents: Immediate review and remediation
+
+9. COMPLIANCE & DOCUMENTATION
+   - Document who has admin access
+   - Keep audit trail of admin account changes
+   - Record password change dates
+   - Maintain incident response log
+
+10. COMMUNICATION SECURITY
+    - Use encrypted channels for security discussions
+    - Never send passwords via:
+      * Email
+      * Slack/Teams/Discord
+      * SMS
+      * Unencrypted messaging
+    - Use password manager sharing features when needed
+
+===================================================================
+
+DATABASE CONSTRAINT FIX - 2026-04-21
+===================================================================
+
+ISSUE RESOLVED: user_profiles CHECK Constraint
+
+PROBLEM:
+The user_profiles table had an overly restrictive CHECK constraint that
+was preventing user registration. The constraint "user_profiles_rol_check"
+was causing the error:
+"new row for relation 'user_profiles' violates check constraint"
+
+This occurred when trying to insert users with NULL values in optional
+fields like teléfono and ciudad.
+
+FIX APPLIED:
+1. Dropped the problematic CHECK constraint
+2. Ensured teléfono and ciudad columns explicitly allow NULL values
+3. Made apellidos column nullable as well (optional field)
+4. Created a new CHECK constraint that ONLY validates rol enumeration
+5. The new constraint validates: 'user', 'admin', 'moderator', 'superuser', 'Editor'
+
+MIGRATION FILE:
+- Location: src/db/fix-user-profiles-check-constraint.sql
+- Applied: 2026-04-21
+- Status: ✅ Complete
+
+VALIDATION RULES (After Fix):
+- Required Fields: id, nombre, rol, created_at
+- Optional Fields: apellidos, teléfono, ciudad
+- rol Values: Must be one of: 'user', 'admin', 'moderator', 'superuser', 'Editor'
+- Contact Fields: Can be NULL or contain any valid text
+
+TESTING PERFORMED:
+✅ Users can register with NULL teléfono
+✅ Users can register with NULL ciudad
+✅ Users can register with NULL apellidos
+✅ Invalid rol values are properly rejected
+✅ Existing users unaffected by migration
+
+IMPACT:
+- User registration now works correctly
+- Optional contact fields are truly optional
+- Data integrity maintained for rol field
+- No breaking changes to existing functionality
+
+===================================================================
+
+ADMIN ACCOUNT DETAILS (Complete after setup):
+
+Primary Admin Account:
+- Email: admin@criaderopasoreal.com
+- UUID: ___________________________ (Fill in after Step 2)
+- Created: 2026-04-21
+- Password Changed: ______________ (Update after first login)
+- 2FA Enabled: [ ] Yes  [ ] No
+- Last Reviewed: ______________
+
+Backup Admin Account (if created):
+- Email: ___________________________
+- UUID: ___________________________
+- Created: _______________
+- Password Changed: ______________
+- 2FA Enabled: [ ] Yes  [ ] No
+
+===================================================================
+
+EMERGENCY CONTACTS:
+
+Development Team: ___________________________
+Supabase Support: support@supabase.com
+Security Incidents: ___________________________
+
+===================================================================
+
+SECURITY CHECKLIST:
+
+Setup Phase:
+[ ] Admin user created in Supabase
+[ ] UUID documented above
+[ ] User profile created with Admin role
+[ ] Login tested successfully
+[ ] Admin dashboard access verified
+[ ] Default password changed
+[ ] New password stored in password manager
+[ ] Backup admin account created (optional)
+
+Ongoing Maintenance:
+[ ] Monthly log reviews scheduled
+[ ] Quarterly access audits scheduled  
+[ ] Annual password rotation scheduled
+[ ] Team members trained on security practices
+[ ] Incident response plan documented
+[ ] Backup credentials tested
+
+Database Integrity:
+[✅] CHECK constraint fixed (2026-04-21)
+[✅] user_profiles schema validated
+[✅] NULL handling verified for optional fields
+[ ] Regular database backups configured
+[ ] Row-level security policies reviewed
+
+===================================================================
+
+IMPORTANT NOTES:
+
+- This file should be stored SECURELY and NOT committed to Git
+- Add this file to .gitignore immediately
+- Share this information only through secure channels
+- Update this document after any security-related changes
+- Keep both digital and physical backup copies in secure locations
+
+===================================================================
+
+RECENT CHANGES LOG:
+
+2026-04-21:
+- Fixed user_profiles CHECK constraint issue
+- Made teléfono, ciudad, and apellidos columns nullable
+- Created new rol-only validation constraint
+- Documented allowed rol values: user, admin, moderator, superuser, Editor
+- Verified user registration functionality working correctly
+
+===================================================================
+
+Last Updated: 2026-04-21
+Document Owner: Criadero Paso Real Admin Team
+Classification: CONFIDENTIAL - INTERNAL USE ONLY
