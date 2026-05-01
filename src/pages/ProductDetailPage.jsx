@@ -13,6 +13,7 @@ import { Badge } from '@/components/ui/badge';
 import { supabase } from '@/lib/customSupabaseClient';
 import { useToast } from '@/components/ui/use-toast';
 import { normalizeProduct } from '@/lib/contentAdapters';
+import { getSiteUrl } from '@/lib/siteUrl';
 
 const ProductDetailPage = () => {
   const { id } = useParams();
@@ -24,6 +25,7 @@ const ProductDetailPage = () => {
   const [loading, setLoading] = useState(true);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const siteUrl = getSiteUrl();
 
   useEffect(() => {
     const loadProduct = async () => {
@@ -160,13 +162,13 @@ const ProductDetailPage = () => {
         <title>{animal.nombre} - Criadero Paso Real</title>
         <meta name="description" content={animal.descripcionBreve || animal.descripcion || `Conoce a ${animal.nombre}, burro criollo colombiano de silla disponible en Criadero Paso Real.`} />
         <meta name="keywords" content={`${animal.nombre}, burro criollo colombiano, ${animal.raza}, ${animal.color}, Criadero Paso Real, venta de burros`} />
-        <link rel="canonical" href={`https://criaderopasoreal.com/venta/${animal.id}`} />
+        <link rel="canonical" href={`${siteUrl}/venta/${animal.id}`} />
         
         {/* Open Graph */}
         <meta property="og:title" content={`${animal.nombre} - Criadero Paso Real`} />
         <meta property="og:description" content={animal.descripcionBreve || animal.descripcion} />
         <meta property="og:image" content={animal.imagen || animal.imagenes?.[0]} />
-        <meta property="og:url" content={`https://criaderopasoreal.com/venta/${animal.id}`} />
+        <meta property="og:url" content={`${siteUrl}/venta/${animal.id}`} />
         <meta property="og:type" content="product" />
         <meta property="product:price:amount" content={animal.precio} />
         <meta property="product:price:currency" content="COP" />
