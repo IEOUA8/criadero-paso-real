@@ -207,15 +207,15 @@ const Header = () => {
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="lg:hidden bg-[#0B0B0B]/97 backdrop-blur-xl border-t border-[#C8A94B]/25 shadow-lg"
+          className="lg:hidden absolute top-full left-0 right-0 z-[60] bg-[#050505] border-t border-[#C8A94B]/35 shadow-[0_24px_40px_rgba(0,0,0,0.45)]"
         >
-          <div className="px-4 py-4 space-y-3">
+          <div className="px-5 py-5 space-y-3 bg-[#050505]">
             {navItems.map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block text-[#C8A94B] hover:text-[#F1DE9A] transition-smooth py-2 font-medium"
+                className="block text-[#C8A94B] hover:text-[#F1DE9A] transition-smooth py-2.5 font-medium border-b border-[#C8A94B]/15 last:border-b-0"
               >
                 {item.name}
               </Link>
