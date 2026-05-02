@@ -11,6 +11,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { useToast } from '@/components/ui/use-toast';
 import { DEFAULT_ROLE } from '@/constants/roles';
+import { getSiteUrl } from '@/lib/siteUrl';
 
 const SignupPage = () => {
   const navigate = useNavigate();
@@ -25,6 +26,7 @@ const SignupPage = () => {
   });
   const [loading, setLoading] = useState(false);
   const [errorState, setErrorState] = useState('');
+  const siteUrl = getSiteUrl();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -86,6 +88,9 @@ const SignupPage = () => {
       <Helmet>
         <title>Crear Cuenta - Criadero Paso Real</title>
         <meta name="description" content="Crea tu cuenta en Criadero Paso Real para acceder a todas las funcionalidades." />
+        <link rel="canonical" href={`${siteUrl}/signup`} />
+        <meta property="og:url" content={`${siteUrl}/signup`} />
+        <meta property="og:type" content="website" />
       </Helmet>
       
       <Header />

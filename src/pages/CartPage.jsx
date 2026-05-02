@@ -11,11 +11,13 @@ import OrderSummary from '@/components/OrderSummary';
 import ReproductiveDisclaimer from '@/components/ReproductiveDisclaimer';
 import TermsCheckbox from '@/components/TermsCheckbox';
 import { Button } from '@/components/ui/button';
+import { getSiteUrl } from '@/lib/siteUrl';
 
 const CartPage = () => {
   const navigate = useNavigate();
   const { items, updateQuantity, removeFromCart, getTotal } = useCart();
   const [termsAccepted, setTermsAccepted] = useState(false);
+  const siteUrl = getSiteUrl();
 
   const itemCount = items?.length || 0;
 
@@ -25,6 +27,9 @@ const CartPage = () => {
         <Helmet>
           <title>Carrito de Compras - Criadero Paso Real</title>
           <meta name="description" content="Tu carrito de compras está vacío. Explora nuestros productos y servicios." />
+          <link rel="canonical" href={`${siteUrl}/carrito`} />
+          <meta property="og:url" content={`${siteUrl}/carrito`} />
+          <meta property="og:type" content="website" />
         </Helmet>
 
         <Header />
@@ -58,6 +63,9 @@ const CartPage = () => {
       <Helmet>
         <title>{`Carrito de Compras (${itemCount}) - Criadero Paso Real`}</title>
         <meta name="description" content={`Tienes ${itemCount} producto${itemCount !== 1 ? 's' : ''} en tu carrito de compras.`} />
+        <link rel="canonical" href={`${siteUrl}/carrito`} />
+        <meta property="og:url" content={`${siteUrl}/carrito`} />
+        <meta property="og:type" content="website" />
       </Helmet>
 
       <Header />

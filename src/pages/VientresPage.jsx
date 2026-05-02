@@ -12,10 +12,12 @@ import { useToast } from '@/components/ui/use-toast';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import { supabase } from '@/lib/customSupabaseClient';
 import { normalizeVientre } from '@/lib/contentAdapters';
+import { getSiteUrl } from '@/lib/siteUrl';
 
 const VientresPage = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
+  const siteUrl = getSiteUrl();
   const [vientres, setVientres] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -63,6 +65,9 @@ const VientresPage = () => {
       <Helmet>
         <title>Vientres - Criadero Paso Real</title>
         <meta name="description" content="Burras criollas colombianas criadas en libertad, fuertes, nobles y 100% funcionales." />
+        <link rel="canonical" href={`${siteUrl}/vientres`} />
+        <meta property="og:url" content={`${siteUrl}/vientres`} />
+        <meta property="og:type" content="website" />
       </Helmet>
 
       <Header />

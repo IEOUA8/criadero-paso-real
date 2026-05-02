@@ -10,10 +10,12 @@ import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { useAuth } from '@/contexts/AuthContext';
 import { useToast } from '@/components/ui/use-toast';
 import { supabase } from '@/lib/customSupabaseClient';
+import { getSiteUrl } from '@/lib/siteUrl';
 
 const AdminProfile = () => {
   const { currentUser, user, updateProfile } = useAuth();
   const { toast } = useToast();
+  const siteUrl = getSiteUrl();
   
   const [formData, setFormData] = useState({
     nombre: currentUser?.nombre || '',
@@ -170,6 +172,9 @@ const AdminProfile = () => {
       <Helmet>
         <title>Mi Perfil - Admin | Criadero Paso Real</title>
         <meta name="description" content="Gestiona tu perfil de administrador" />
+        <link rel="canonical" href={`${siteUrl}/admin/perfil`} />
+        <meta property="og:url" content={`${siteUrl}/admin/perfil`} />
+        <meta name="robots" content="noindex, nofollow" />
       </Helmet>
 
       <div className="max-w-4xl mx-auto space-y-8">

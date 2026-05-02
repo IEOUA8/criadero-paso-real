@@ -7,6 +7,7 @@ import Footer from '@/components/Footer';
 import HeroSection from '@/components/HeroSection';
 import { Button } from '@/components/ui/button';
 import ExpandableModal from '@/components/ExpandableModal';
+import { getSiteUrl } from '@/lib/siteUrl';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 18 },
@@ -25,6 +26,7 @@ const onImageError = (event) => {
 
 const QuienesSomosPage = () => {
   const [activeModal, setActiveModal] = useState(null);
+  const siteUrl = getSiteUrl();
 
   const openModal = (title, content) => setActiveModal({ title, content });
   const closeModal = () => setActiveModal(null);
@@ -99,6 +101,9 @@ Hoy, Paso Real es un proyecto que combina tradición rural con visión moderna, 
           name="description"
           content="Criadero Paso Real – Excelencia en la cría del burro criollo colombiano de silla, en libertad y pastoreo."
         />
+        <link rel="canonical" href={`${siteUrl}/quienes-somos`} />
+        <meta property="og:url" content={`${siteUrl}/quienes-somos`} />
+        <meta property="og:type" content="website" />
       </Helmet>
 
       <Header />

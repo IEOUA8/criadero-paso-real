@@ -14,10 +14,12 @@ import InstagramSection from '@/components/InstagramSection';
 import ReviewsSection from '@/components/ReviewsSection';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { getSiteUrl } from '@/lib/siteUrl';
 
 const HomePage = () => {
   const navigate = useNavigate();
   const { addToCart } = useCart();
+  const siteUrl = getSiteUrl();
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
@@ -84,6 +86,9 @@ const HomePage = () => {
       <Helmet>
         <title>Criadero Paso Real - Burro Criollo Colombiano de Silla</title>
         <meta name="description" content="Criadero Paso Real: crianza responsable de burro criollo colombiano de silla. Genética de campeones, criados en libertad. Venta de saltos y animales." />
+        <link rel="canonical" href={`${siteUrl}/`} />
+        <meta property="og:url" content={`${siteUrl}/`} />
+        <meta property="og:type" content="website" />
       </Helmet>
 
       <Header />

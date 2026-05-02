@@ -13,9 +13,11 @@ import { supabase } from '@/lib/customSupabaseClient';
 import { normalizeCategory, makeSlug } from '@/lib/contentAdapters';
 import { useToast } from '@/components/ui/use-toast';
 import LoadingSpinner from '@/components/LoadingSpinner';
+import { getSiteUrl } from '@/lib/siteUrl';
 
 const AdminCategorias = () => {
   const { toast } = useToast();
+  const siteUrl = getSiteUrl();
   const [loading, setLoading] = useState(true);
   const [categories, setCategories] = useState([]);
   const [dbReady, setDbReady] = useState(true);
@@ -295,6 +297,9 @@ const AdminCategorias = () => {
       <Helmet>
         <title>Categorías - Admin | Criadero Paso Real</title>
         <meta name="description" content="Gestión de categorías para productos y blog" />
+        <link rel="canonical" href={`${siteUrl}/admin/categorias`} />
+        <meta property="og:url" content={`${siteUrl}/admin/categorias`} />
+        <meta name="robots" content="noindex, nofollow" />
       </Helmet>
 
       <div className="space-y-6">

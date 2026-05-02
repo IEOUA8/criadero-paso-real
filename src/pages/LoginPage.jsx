@@ -13,6 +13,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import { DEFAULT_ROLE } from '@/constants/roles';
+import { getSiteUrl } from '@/lib/siteUrl';
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -22,6 +23,7 @@ const LoginPage = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [loading, setLoading] = useState(false);
   const [errorState, setErrorState] = useState('');
+  const siteUrl = getSiteUrl();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -129,6 +131,9 @@ const LoginPage = () => {
       <Helmet>
         <title>Iniciar Sesión - Criadero Paso Real</title>
         <meta name="description" content="Inicia sesión en tu cuenta de Criadero Paso Real." />
+        <link rel="canonical" href={`${siteUrl}/login`} />
+        <meta property="og:url" content={`${siteUrl}/login`} />
+        <meta property="og:type" content="website" />
       </Helmet>
       
       <Header />

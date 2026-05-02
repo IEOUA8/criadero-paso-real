@@ -13,9 +13,11 @@ import PhotoUploader from '@/components/PhotoUploader';
 import { supabase } from '@/lib/customSupabaseClient';
 import { useToast } from '@/components/ui/use-toast';
 import LoadingSpinner from '@/components/LoadingSpinner';
+import { getSiteUrl } from '@/lib/siteUrl';
 
 const AdminProducts = () => {
   const { toast } = useToast();
+  const siteUrl = getSiteUrl();
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
   const [productCategories, setProductCategories] = useState([]);
@@ -296,6 +298,9 @@ const AdminProducts = () => {
       <Helmet>
         <title>Panel de Ventas - Admin | Criadero Paso Real</title>
         <meta name="description" content="Gestión de productos en venta" />
+        <link rel="canonical" href={`${siteUrl}/admin/ventas`} />
+        <meta property="og:url" content={`${siteUrl}/admin/ventas`} />
+        <meta name="robots" content="noindex, nofollow" />
       </Helmet>
 
       <div className="space-y-6">

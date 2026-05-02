@@ -13,9 +13,11 @@ import PhotoUploader from '@/components/PhotoUploader';
 import { supabase } from '@/lib/customSupabaseClient';
 import { useToast } from '@/components/ui/use-toast';
 import LoadingSpinner from '@/components/LoadingSpinner';
+import { getSiteUrl } from '@/lib/siteUrl';
 
 const AdminReproductores = () => {
   const { toast } = useToast();
+  const siteUrl = getSiteUrl();
   const [loading, setLoading] = useState(true);
   const [reproductores, setReproductores] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -224,6 +226,9 @@ const AdminReproductores = () => {
       <Helmet>
         <title>Panel de Reproductores - Admin | Criadero Paso Real</title>
         <meta name="description" content="Gestión de reproductores" />
+        <link rel="canonical" href={`${siteUrl}/admin/reproductores`} />
+        <meta property="og:url" content={`${siteUrl}/admin/reproductores`} />
+        <meta name="robots" content="noindex, nofollow" />
       </Helmet>
 
       <div className="space-y-6">

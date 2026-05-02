@@ -11,11 +11,13 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { useToast } from '@/components/ui/use-toast';
 import { VALID_ROLES, DEFAULT_ROLE } from '@/constants/roles';
+import { getSiteUrl } from '@/lib/siteUrl';
 
 const AccountPage = () => {
   const { userProfile: authProfile, signOut, user, isAdmin } = useAuth();
   const navigate = useNavigate();
   const { toast } = useToast();
+  const siteUrl = getSiteUrl();
   
   const [profileData, setProfileData] = useState(authProfile);
   const [loading, setLoading] = useState(true);
@@ -160,6 +162,9 @@ const AccountPage = () => {
     <>
       <Helmet>
         <title>Mi Cuenta - Criadero Paso Real</title>
+        <link rel="canonical" href={`${siteUrl}/cuenta`} />
+        <meta property="og:url" content={`${siteUrl}/cuenta`} />
+        <meta property="og:type" content="website" />
       </Helmet>
 
       <Header />

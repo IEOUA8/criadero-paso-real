@@ -13,9 +13,11 @@ import PhotoUploader from '@/components/PhotoUploader';
 import { supabase } from '@/lib/customSupabaseClient';
 import { useToast } from '@/components/ui/use-toast';
 import LoadingSpinner from '@/components/LoadingSpinner';
+import { getSiteUrl } from '@/lib/siteUrl';
 
 const AdminVientres = () => {
   const { toast } = useToast();
+  const siteUrl = getSiteUrl();
   const [loading, setLoading] = useState(true);
   const [vientres, setVientres] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -233,6 +235,9 @@ const AdminVientres = () => {
       <Helmet>
         <title>Panel de Vientres - Admin | Criadero Paso Real</title>
         <meta name="description" content="Gestión de vientres reproductoras" />
+        <link rel="canonical" href={`${siteUrl}/admin/vientres`} />
+        <meta property="og:url" content={`${siteUrl}/admin/vientres`} />
+        <meta name="robots" content="noindex, nofollow" />
       </Helmet>
 
       <div className="space-y-6">

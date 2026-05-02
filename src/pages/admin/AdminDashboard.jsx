@@ -18,9 +18,11 @@ import { supabase } from '@/lib/customSupabaseClient';
 import { useToast } from '@/components/ui/use-toast';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import { normalizeOrderRecord, normalizeOrderStatus } from '@/lib/orderStatus';
+import { getSiteUrl } from '@/lib/siteUrl';
 
 const AdminDashboard = () => {
   const { toast } = useToast();
+  const siteUrl = getSiteUrl();
   const [loading, setLoading] = useState(true);
   const [stats, setStats] = useState({
     pendingOrders: 0,
@@ -164,6 +166,9 @@ const AdminDashboard = () => {
       <Helmet>
         <title>Dashboard - Admin | Criadero Paso Real</title>
         <meta name="description" content="Panel de administración del Criadero Paso Real" />
+        <link rel="canonical" href={`${siteUrl}/admin`} />
+        <meta property="og:url" content={`${siteUrl}/admin`} />
+        <meta name="robots" content="noindex, nofollow" />
       </Helmet>
 
       <div className="space-y-8">

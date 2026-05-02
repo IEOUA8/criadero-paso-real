@@ -16,12 +16,14 @@ import TermsCheckbox from '@/components/TermsCheckbox';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { getSiteUrl } from '@/lib/siteUrl';
 
 const CheckoutPage = () => {
   const navigate = useNavigate();
   const { items, getTotal, clearCart } = useCart();
   const { user } = useAuth();
   const { toast } = useToast();
+  const siteUrl = getSiteUrl();
 
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -261,6 +263,9 @@ const CheckoutPage = () => {
         <Helmet>
           <title>Finalizar Compra - Criadero Paso Real</title>
           <meta name="description" content="Completa tu compra de forma segura en Criadero Paso Real." />
+          <link rel="canonical" href={`${siteUrl}/checkout`} />
+          <meta property="og:url" content={`${siteUrl}/checkout`} />
+          <meta property="og:type" content="website" />
         </Helmet>
         <Header />
         <div className="min-h-screen flex flex-col items-center justify-center premium-page-bg pt-32 pb-16">
@@ -279,6 +284,9 @@ const CheckoutPage = () => {
       <Helmet>
         <title>Finalizar Compra - Criadero Paso Real</title>
         <meta name="description" content="Completa tu compra de forma segura en Criadero Paso Real." />
+        <link rel="canonical" href={`${siteUrl}/checkout`} />
+        <meta property="og:url" content={`${siteUrl}/checkout`} />
+        <meta property="og:type" content="website" />
       </Helmet>
 
       <Header />

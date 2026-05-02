@@ -9,9 +9,11 @@ import { Input } from '@/components/ui/input';
 import { supabase } from '@/lib/customSupabaseClient';
 import { useToast } from '@/components/ui/use-toast';
 import LoadingSpinner from '@/components/LoadingSpinner';
+import { getSiteUrl } from '@/lib/siteUrl';
 
 const AdminBlog = () => {
   const { toast } = useToast();
+  const siteUrl = getSiteUrl();
   const [loading, setLoading] = useState(true);
   const [articles, setArticles] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
@@ -131,6 +133,9 @@ const AdminBlog = () => {
       <Helmet>
         <title>Gestión de Blog - Admin | Criadero Paso Real</title>
         <meta name="description" content="Gestión de artículos del blog" />
+        <link rel="canonical" href={`${siteUrl}/admin/blog`} />
+        <meta property="og:url" content={`${siteUrl}/admin/blog`} />
+        <meta name="robots" content="noindex, nofollow" />
       </Helmet>
 
       <div className="space-y-6">

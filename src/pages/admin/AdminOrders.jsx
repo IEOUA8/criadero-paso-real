@@ -22,9 +22,11 @@ import { supabase } from '@/lib/customSupabaseClient';
 import { useToast } from '@/components/ui/use-toast';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import { getOrderStatusLabel, normalizeOrderRecord, normalizeOrderStatus } from '@/lib/orderStatus';
+import { getSiteUrl } from '@/lib/siteUrl';
 
 const AdminOrders = () => {
   const { toast } = useToast();
+  const siteUrl = getSiteUrl();
   const [loading, setLoading] = useState(true);
   const [orders, setOrders] = useState([]);
   const [filteredOrders, setFilteredOrders] = useState([]);
@@ -163,6 +165,9 @@ const AdminOrders = () => {
       <Helmet>
         <title>Gestión de Pedidos - Admin | Criadero Paso Real</title>
         <meta name="description" content="Gestión de pedidos del Criadero Paso Real" />
+        <link rel="canonical" href={`${siteUrl}/admin/pedidos`} />
+        <meta property="og:url" content={`${siteUrl}/admin/pedidos`} />
+        <meta name="robots" content="noindex, nofollow" />
       </Helmet>
 
       <div className="space-y-6">

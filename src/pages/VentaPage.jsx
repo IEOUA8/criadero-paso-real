@@ -9,9 +9,11 @@ import LoadingSpinner from '@/components/LoadingSpinner';
 import { useToast } from '@/components/ui/use-toast';
 import { supabase } from '@/lib/customSupabaseClient';
 import { normalizeCategory, normalizeProduct } from '@/lib/contentAdapters';
+import { getSiteUrl } from '@/lib/siteUrl';
 
 const VentaPage = () => {
   const { toast } = useToast();
+  const siteUrl = getSiteUrl();
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -105,6 +107,9 @@ const VentaPage = () => {
       <Helmet>
         <title>Animales Disponibles para Venta - Criadero Paso Real</title>
         <meta name="description" content="Explora nuestro catálogo de burros criollos colombianos de silla disponibles para venta. Genética superior, salud garantizada y asesoría completa." />
+        <link rel="canonical" href={`${siteUrl}/venta`} />
+        <meta property="og:url" content={`${siteUrl}/venta`} />
+        <meta property="og:type" content="website" />
       </Helmet>
 
       <Header />

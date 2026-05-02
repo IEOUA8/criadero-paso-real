@@ -6,9 +6,11 @@ import BurrosVentaInventory from './BurrosVentaInventory';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Helmet } from 'react-helmet';
+import { getSiteUrl } from '@/lib/siteUrl';
 
 const InventoryTab = () => {
   const [activeTab, setActiveTab] = useState('reproductores');
+  const siteUrl = getSiteUrl();
 
   const tabs = [
     { id: 'reproductores', label: 'Reproductores' },
@@ -21,6 +23,9 @@ const InventoryTab = () => {
       <Helmet>
         <title>Gestión de Inventario - Admin - Criadero Paso Real</title>
         <meta name="description" content="Panel administrativo para gestionar el inventario de animales del Criadero Paso Real." />
+        <link rel="canonical" href={`${siteUrl}/admin/ventas`} />
+        <meta property="og:url" content={`${siteUrl}/admin/ventas`} />
+        <meta name="robots" content="noindex, nofollow" />
       </Helmet>
       
       <Header />

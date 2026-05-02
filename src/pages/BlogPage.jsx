@@ -11,10 +11,12 @@ import LoadingSpinner from '@/components/LoadingSpinner';
 import { useToast } from '@/components/ui/use-toast';
 import { supabase } from '@/lib/customSupabaseClient';
 import { normalizeBlogPost, normalizeCategory } from '@/lib/contentAdapters';
+import { getSiteUrl } from '@/lib/siteUrl';
 
 const BlogPage = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
+  const siteUrl = getSiteUrl();
   const [posts, setPosts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -113,6 +115,9 @@ const BlogPage = () => {
     <>
       <Helmet>
         <title>Blog - Criadero Paso Real</title>
+        <link rel="canonical" href={`${siteUrl}/blog`} />
+        <meta property="og:url" content={`${siteUrl}/blog`} />
+        <meta property="og:type" content="website" />
       </Helmet>
 
       <Header />

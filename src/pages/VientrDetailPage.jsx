@@ -10,11 +10,13 @@ import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
 import { supabase } from '@/lib/customSupabaseClient';
 import { normalizeVientre } from '@/lib/contentAdapters';
+import { getSiteUrl } from '@/lib/siteUrl';
 
 const VientrDetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { toast } = useToast();
+  const siteUrl = getSiteUrl();
   const [vientre, setVientre] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -92,6 +94,9 @@ const VientrDetailPage = () => {
           name="description"
           content={`Conoce a ${vientre.nombre}, vientre disponible en Criadero Paso Real.`}
         />
+        <link rel="canonical" href={`${siteUrl}/vientres/${vientre.id}`} />
+        <meta property="og:url" content={`${siteUrl}/vientres/${vientre.id}`} />
+        <meta property="og:type" content="website" />
       </Helmet>
 
       <Header />
@@ -187,4 +192,3 @@ const VientrDetailPage = () => {
 };
 
 export default VientrDetailPage;
-

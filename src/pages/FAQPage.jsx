@@ -5,9 +5,11 @@ import { ChevronDown } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import FAQSection from '@/components/FAQSection';
+import { getSiteUrl } from '@/lib/siteUrl';
 
 const FAQPage = () => {
   const [isMainAccordionOpen, setIsMainAccordionOpen] = useState(true);
+  const siteUrl = getSiteUrl();
 
   const burrosCriollosFaqs = [
     {
@@ -182,6 +184,9 @@ const FAQPage = () => {
       <Helmet>
         <title>Preguntas Frecuentes - Criadero Paso Real</title>
         <meta name="description" content="Encuentra respuestas sobre burros criollos colombianos, burras reproductoras, pollinos y genética para producción de mulas. Proceso de compra paso a paso." />
+        <link rel="canonical" href={`${siteUrl}/faq`} />
+        <meta property="og:url" content={`${siteUrl}/faq`} />
+        <meta property="og:type" content="website" />
       </Helmet>
 
       <Header />

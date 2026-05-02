@@ -5,15 +5,20 @@ import { Button } from '@/components/ui/button';
 import { Home } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { getSiteUrl } from '@/lib/siteUrl';
 
 const NotFoundPage = () => {
   const navigate = useNavigate();
+  const siteUrl = getSiteUrl();
 
   return (
     <>
       <Helmet>
         <title>Página no encontrada - Criadero Paso Real</title>
         <meta name="description" content="La página que buscas no existe. Regresa a la página principal de Criadero Paso Real." />
+        <link rel="canonical" href={`${siteUrl}/404`} />
+        <meta property="og:url" content={`${siteUrl}/404`} />
+        <meta property="og:type" content="website" />
       </Helmet>
       
       <Header />

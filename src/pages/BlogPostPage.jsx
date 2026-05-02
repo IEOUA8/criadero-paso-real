@@ -9,11 +9,13 @@ import LoadingSpinner from '@/components/LoadingSpinner';
 import { useToast } from '@/components/ui/use-toast';
 import { supabase } from '@/lib/customSupabaseClient';
 import { normalizeBlogPost } from '@/lib/contentAdapters';
+import { getSiteUrl } from '@/lib/siteUrl';
 
 const BlogPostPage = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
   const { toast } = useToast();
+  const siteUrl = getSiteUrl();
   const [post, setPost] = useState(null);
   const [relatedPosts, setRelatedPosts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -97,6 +99,9 @@ const BlogPostPage = () => {
           name="description"
           content={(post.extracto || post.contenido || '').slice(0, 160)}
         />
+        <link rel="canonical" href={`${siteUrl}/blog/${post.slug || post.id}`} />
+        <meta property="og:url" content={`${siteUrl}/blog/${post.slug || post.id}`} />
+        <meta property="og:type" content="article" />
       </Helmet>
 
       <Header />
@@ -189,4 +194,3 @@ const BlogPostPage = () => {
 };
 
 export default BlogPostPage;
-

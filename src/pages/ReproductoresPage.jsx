@@ -13,11 +13,13 @@ import LoadingSpinner from '@/components/LoadingSpinner';
 import { useToast } from '@/components/ui/use-toast';
 import { supabase } from '@/lib/customSupabaseClient';
 import { normalizeReproductor } from '@/lib/contentAdapters';
+import { getSiteUrl } from '@/lib/siteUrl';
 
 const ReproductoresPage = () => {
   const navigate = useNavigate();
   const { addToCart } = useCart();
   const { toast } = useToast();
+  const siteUrl = getSiteUrl();
   const [reproductores, setReproductores] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -73,6 +75,9 @@ const ReproductoresPage = () => {
       <Helmet>
         <title>Reproductores - Criadero Paso Real</title>
         <meta name="description" content="Genética de campeones del burro criollo colombiano de silla. Conoce a nuestros reproductores." />
+        <link rel="canonical" href={`${siteUrl}/reproductores`} />
+        <meta property="og:url" content={`${siteUrl}/reproductores`} />
+        <meta property="og:type" content="website" />
       </Helmet>
 
       <Header />

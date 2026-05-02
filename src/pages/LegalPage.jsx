@@ -2,8 +2,11 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { getSiteUrl } from '@/lib/siteUrl';
 
 const LegalPage = () => {
+  const siteUrl = getSiteUrl();
+
   return (
     <>
       <Helmet>
@@ -12,6 +15,9 @@ const LegalPage = () => {
           name="description"
           content="Conoce cómo tratamos tus datos personales en Criadero Paso Real."
         />
+        <link rel="canonical" href={`${siteUrl}/legal`} />
+        <meta property="og:url" content={`${siteUrl}/legal`} />
+        <meta property="og:type" content="website" />
       </Helmet>
 
       <Header />

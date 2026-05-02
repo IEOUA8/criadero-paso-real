@@ -10,11 +10,13 @@ import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
 import { supabase } from '@/lib/customSupabaseClient';
 import { normalizeReproductor } from '@/lib/contentAdapters';
+import { getSiteUrl } from '@/lib/siteUrl';
 
 const ReproductorDetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const { toast } = useToast();
+  const siteUrl = getSiteUrl();
   const [reproductor, setReproductor] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -85,6 +87,9 @@ const ReproductorDetailPage = () => {
           name="description"
           content={`Conoce a ${reproductor.nombre}, reproductor disponible en Criadero Paso Real.`}
         />
+        <link rel="canonical" href={`${siteUrl}/reproductor/${reproductor.id}`} />
+        <meta property="og:url" content={`${siteUrl}/reproductor/${reproductor.id}`} />
+        <meta property="og:type" content="website" />
       </Helmet>
 
       <Header />
@@ -185,4 +190,3 @@ const ReproductorDetailPage = () => {
 };
 
 export default ReproductorDetailPage;
-

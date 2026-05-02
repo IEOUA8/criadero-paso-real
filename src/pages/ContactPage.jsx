@@ -6,13 +6,19 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ContactForm from '@/components/ContactForm';
 import ContactInfoCards from '@/components/ContactInfoCards';
+import { getSiteUrl } from '@/lib/siteUrl';
 
 const ContactPage = () => {
+  const siteUrl = getSiteUrl();
+
   return (
     <>
       <Helmet>
         <title>Contáctenos - Criadero Paso Real</title>
         <meta name="description" content="Ponte en contacto con Criadero Paso Real. Estamos aquí para resolver tus dudas sobre nuestros burros criollos colombianos." />
+        <link rel="canonical" href={`${siteUrl}/contacto`} />
+        <meta property="og:url" content={`${siteUrl}/contacto`} />
+        <meta property="og:type" content="website" />
       </Helmet>
 
       <Header />

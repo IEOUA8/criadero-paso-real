@@ -14,6 +14,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { useToast } from '@/components/ui/use-toast';
 import { usePhotoUpload } from '@/hooks/usePhotoUpload';
 import LoadingSpinner from '@/components/LoadingSpinner';
+import { getSiteUrl } from '@/lib/siteUrl';
 
 const AdminBlogEditor = () => {
   const { id } = useParams();
@@ -22,6 +23,7 @@ const AdminBlogEditor = () => {
   const { toast } = useToast();
   const { uploadPhotos, isLoading: uploadingPhoto } = usePhotoUpload('blog');
   const [loading, setLoading] = useState(false);
+  const siteUrl = getSiteUrl();
   const [blogCategories, setBlogCategories] = useState([]);
   const [portadaPreview, setPortadaPreview] = useState(null);
   const [formData, setFormData] = useState({
@@ -228,6 +230,9 @@ const AdminBlogEditor = () => {
       <Helmet>
         <title>{id ? 'Editar' : 'Crear'} Artículo - Admin | Criadero Paso Real</title>
         <meta name="description" content={`${id ? 'Editar' : 'Crear'} artículo del blog`} />
+        <link rel="canonical" href={id ? `${siteUrl}/admin/blog/${id}/editar` : `${siteUrl}/admin/blog/nuevo`} />
+        <meta property="og:url" content={id ? `${siteUrl}/admin/blog/${id}/editar` : `${siteUrl}/admin/blog/nuevo`} />
+        <meta name="robots" content="noindex, nofollow" />
       </Helmet>
 
       <div className="space-y-6">
