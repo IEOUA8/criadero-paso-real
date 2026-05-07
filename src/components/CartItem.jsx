@@ -38,14 +38,14 @@ const CartItem = ({ item, onUpdateQuantity, onRemove }) => {
   const subtotal = item.precio * item.cantidad;
 
   return (
-    <div className="glass-card rounded-2xl p-4 md:p-5 transition-colors duration-200">
+    <div className="border border-[#cdbb91] bg-[#fffdf7] p-4 md:p-5 transition-colors duration-200">
       <div className="flex flex-col sm:flex-row gap-4">
         {/* Product Image */}
         <div className="flex-shrink-0 mx-auto sm:mx-0">
           <img
             src={item.imagen}
             alt={item.nombre}
-            className="w-[150px] h-[150px] object-cover rounded-lg"
+            className="w-[150px] h-[150px] object-cover"
           />
         </div>
 
@@ -69,7 +69,7 @@ const CartItem = ({ item, onUpdateQuantity, onRemove }) => {
               <Button
                 variant="outline"
                 size="icon"
-                className="h-8 w-8 rounded-full border-white/70 bg-white/70"
+                className="h-8 w-8 rounded-md border-[#cdbb91] bg-[#fffdf7]"
                 onClick={handleDecrement}
                 disabled={item.cantidad <= 1}
               >
@@ -81,13 +81,13 @@ const CartItem = ({ item, onUpdateQuantity, onRemove }) => {
                 min="1"
                 value={item.cantidad}
                 onChange={handleQuantityChange}
-                className="w-16 h-8 text-center rounded-full border-white/70 bg-white/80 text-gray-900"
+                className="w-16 h-8 text-center rounded-md border-[#cdbb91] bg-[#fffdf7] text-gray-900"
               />
               
               <Button
                 variant="outline"
                 size="icon"
-                className="h-8 w-8 rounded-full border-white/70 bg-white/70"
+                className="h-8 w-8 rounded-md border-[#cdbb91] bg-[#fffdf7]"
                 onClick={handleIncrement}
               >
                 <Plus className="h-4 w-4" />

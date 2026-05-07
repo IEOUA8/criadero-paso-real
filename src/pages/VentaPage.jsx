@@ -106,7 +106,7 @@ const VentaPage = () => {
     <>
       <Helmet>
         <title>Animales Disponibles para Venta - Criadero Paso Real</title>
-        <meta name="description" content="Explora nuestro catálogo de burros criollos colombianos de silla disponibles para venta. Genética superior, salud garantizada y asesoría completa." />
+        <meta name="description" content="Explora los burros criollos colombianos de silla disponibles para venta. Genética superior, salud garantizada y asesoría completa." />
         <link rel="canonical" href={`${siteUrl}/venta`} />
         <meta property="og:url" content={`${siteUrl}/venta`} />
         <meta property="og:type" content="website" />
@@ -130,11 +130,11 @@ const VentaPage = () => {
       </div>
 
       {/* Main Content */}
-      <div className="premium-page-bg py-10 md:py-16 lg:py-20 px-4 sm:px-6 md:px-10 lg:px-16 max-[389px]:px-3 max-[389px]:py-8">
+      <div className="premium-page-bg py-8 md:py-11 lg:py-14 px-4 sm:px-6 md:px-10 lg:px-16 max-[389px]:px-3 max-[389px]:py-7">
         <div className="max-w-7xl mx-auto">
           
           {/* Introduction Section */}
-          <div className="text-center mb-10 md:mb-16 premium-glass rounded-3xl p-6 md:p-12 max-[389px]:rounded-2xl max-[389px]:p-4">
+          <div className="text-center mb-8 md:mb-10 border-y border-[#cdbb91] py-6 md:py-8 max-[389px]:py-5">
             <p className="premium-kicker mb-3 max-[389px]:text-[10px] max-[389px]:tracking-[0.16em]">Venta especializada</p>
             <h2 className="premium-title text-2xl md:text-4xl lg:text-5xl font-bold mb-5 md:mb-6 max-w-4xl mx-auto max-[389px]:text-[1.55rem] max-[389px]:mb-4">
               Tradición y Excelencia Genética
@@ -149,14 +149,14 @@ const VentaPage = () => {
           </div>
 
           {/* Indicators Section */}
-          <div className="mb-10 md:mb-20">
+          <div className="mb-8 md:mb-10">
             <IndicatorsSection />
           </div>
 
           {/* Animals Carousel */}
           <div className="mb-12">
             <h3 className="premium-title text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-3 md:mb-4 max-[389px]:text-[1.45rem]">
-              Animales Destacados
+              Animales disponibles
             </h3>
             <p className="premium-description text-center max-w-2xl mx-auto mb-7 md:mb-10 max-[389px]:text-[0.92rem]">
               Selección curada de ejemplares con trazabilidad genética, temperamento equilibrado y preparación para reproducción o trabajo de silla.
@@ -165,10 +165,10 @@ const VentaPage = () => {
               <button
                 type="button"
                 onClick={() => setSelectedCategory('all')}
-                className={`px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm border transition max-[389px]:px-2.5 max-[389px]:text-[11px] ${
+                className={`px-3 md:px-4 py-1.5 md:py-2 rounded-md text-xs md:text-sm border transition max-[389px]:px-2.5 max-[389px]:text-[11px] ${
                   selectedCategory === 'all'
-                    ? 'bg-[#C8A94B] text-white border-[#C8A94B]'
-                    : 'bg-white/80 text-gray-700 border-white hover:border-[#C8A94B]/60'
+                    ? 'bg-[#936f2d] text-white border-[#936f2d]'
+                    : 'bg-[#fffdf7] text-[#514638] border-[#ded2b8] hover:border-[#936f2d]'
                 }`}
               >
                 Todas
@@ -178,10 +178,10 @@ const VentaPage = () => {
                   key={category.id}
                   type="button"
                   onClick={() => setSelectedCategory(category.id)}
-                  className={`px-3 md:px-4 py-1.5 md:py-2 rounded-full text-xs md:text-sm border transition max-[389px]:px-2.5 max-[389px]:text-[11px] ${
+                  className={`px-3 md:px-4 py-1.5 md:py-2 rounded-md text-xs md:text-sm border transition max-[389px]:px-2.5 max-[389px]:text-[11px] ${
                     selectedCategory === category.id
                       ? 'text-white'
-                      : 'bg-white/80 text-gray-700 border-white hover:border-[#C8A94B]/60'
+                      : 'bg-[#fffdf7] text-[#514638] border-[#ded2b8] hover:border-[#936f2d]'
                   }`}
                   style={{
                     backgroundColor: selectedCategory === category.id ? category.color : undefined,
@@ -197,7 +197,7 @@ const VentaPage = () => {
                 <LoadingSpinner />
               </div>
             ) : availableProducts.length === 0 ? (
-              <div className="glass-card rounded-2xl p-10 text-center">
+              <div className="glass-card rounded-md p-10 text-center">
                 <h3 className="font-playfair text-3xl font-bold text-[#0B0B0B] mb-2">No hay animales publicados aún</h3>
                 <p className="premium-description">Publica productos desde el panel de administrador para verlos aquí.</p>
               </div>

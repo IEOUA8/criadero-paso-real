@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Calendar, User, ArrowRight, Sparkles } from 'lucide-react';
+import { Calendar, User, ArrowRight } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import LoadingSpinner from '@/components/LoadingSpinner';
@@ -124,11 +124,8 @@ const BlogPage = () => {
 
       <div className="min-h-screen premium-page-bg pt-24 md:pt-32 pb-12 md:pb-16 max-[389px]:pt-20 max-[389px]:pb-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 max-[389px]:px-3">
-          <div className="mb-8 md:mb-10 premium-glass rounded-3xl p-6 md:p-10 text-center max-[389px]:rounded-2xl max-[389px]:p-4">
-            <div className="inline-flex items-center gap-2 mb-3 px-3 py-1.5 rounded-full bg-white/75 border border-white/80">
-              <Sparkles className="w-4 h-4 text-[#C8A94B]" />
-              <span className="premium-kicker !tracking-[0.12em] max-[389px]:!text-[10px] max-[389px]:!tracking-[0.09em]">Notas de criadero</span>
-            </div>
+          <div className="mb-8 md:mb-10 border-y border-[#cdbb91] py-8 md:py-10 text-center max-[389px]:py-6">
+            <p className="premium-kicker mb-3 max-[389px]:!text-[10px] max-[389px]:!tracking-[0.09em]">Notas de criadero</p>
             <h1 className="premium-title text-3xl md:text-5xl font-bold mb-4 max-[389px]:text-[1.7rem]">
               Nuestro Blog
             </h1>
@@ -146,7 +143,7 @@ const BlogPage = () => {
                     <LoadingSpinner />
                   </div>
                 ) : visiblePosts.length === 0 ? (
-                  <div className="md:col-span-2 glass-card rounded-2xl p-10 text-center">
+                  <div className="md:col-span-2 border border-[#cdbb91] bg-[#fffdf7] p-10 text-center">
                     <h3 className="font-playfair text-3xl font-bold text-[#0B0B0B] mb-2">Aún no hay publicaciones</h3>
                     <p className="premium-description">No hay resultados para esa categoría. Prueba otra opción.</p>
                   </div>
@@ -157,12 +154,12 @@ const BlogPage = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1 }}
                   >
-                    <Card className="overflow-hidden glass-card rounded-xl h-full flex flex-col">
+                    <Card className="overflow-hidden border-[#cdbb91] bg-[#fffdf7] shadow-none h-full flex flex-col">
                       <div className="aspect-[16/9] overflow-hidden relative">
                         <img
                           src={post.imagen_portada}
                           alt={post.título}
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                          className="w-full h-full object-cover"
                         />
                       </div>
                       <CardContent className="p-5 md:p-6 flex-1 flex flex-col max-[389px]:p-4">
@@ -193,7 +190,7 @@ const BlogPage = () => {
 
             {/* Sidebar */}
             <div className="lg:col-span-1 space-y-8 max-[389px]:space-y-5">
-              <div className="glass-card rounded-xl p-6 max-[389px]:p-4">
+              <div className="border border-[#cdbb91] bg-[#fffdf7] p-6 max-[389px]:p-4">
                 <h3 className="font-playfair text-xl font-bold text-[#0B0B0B] mb-4 border-b pb-2">Últimas Publicaciones</h3>
                 <ul className="space-y-4">
                   {posts.slice(0, 6).map(post => (
@@ -205,16 +202,16 @@ const BlogPage = () => {
                 </ul>
               </div>
 
-              <div className="glass-card rounded-xl p-6 max-[389px]:p-4">
+              <div className="border border-[#cdbb91] bg-[#fffdf7] p-6 max-[389px]:p-4">
                 <h3 className="font-playfair text-xl font-bold text-[#0B0B0B] mb-4 border-b pb-2">Categorías</h3>
                 <div className="flex flex-wrap gap-2">
                   <button
                     type="button"
                     onClick={() => setSelectedCategory('all')}
-                    className={`px-3 py-1 rounded-full text-sm transition max-[389px]:text-xs max-[389px]:px-2.5 ${
+                    className={`px-3 py-1 rounded-md text-sm transition max-[389px]:text-xs max-[389px]:px-2.5 ${
                       selectedCategory === 'all'
-                        ? 'bg-[#C8A94B] text-white'
-                        : 'bg-[#F4F5F7] text-gray-600 hover:bg-[#C8A94B] hover:text-white'
+                        ? 'bg-[#936f2d] text-white'
+                        : 'bg-[#f4efe4] text-[#514638] hover:bg-[#e7dcc7]'
                     }`}
                   >
                     Todas
@@ -227,10 +224,10 @@ const BlogPage = () => {
                         key={category.id}
                         type="button"
                         onClick={() => setSelectedCategory(category.id)}
-                        className={`px-3 py-1 rounded-full text-sm transition max-[389px]:text-xs max-[389px]:px-2.5 ${
+                        className={`px-3 py-1 rounded-md text-sm transition max-[389px]:text-xs max-[389px]:px-2.5 ${
                           selectedCategory === category.id
                             ? 'text-white'
-                            : 'bg-[#F4F5F7] text-gray-600 hover:bg-[#C8A94B] hover:text-white'
+                            : 'bg-[#f4efe4] text-[#514638] hover:bg-[#e7dcc7]'
                         }`}
                         style={{
                           backgroundColor: selectedCategory === category.id ? category.color : undefined,

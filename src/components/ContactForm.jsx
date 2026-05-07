@@ -15,55 +15,31 @@ const ContactForm = () => {
     {
       id: 'full_name',
       type: 'text',
-      question: '¿Cuál es tu nombre completo?',
-      placeholder: 'Tu nombre completo',
-      validation: (val) => (!val || val.length < 3) ? 'El nombre debe tener al menos 3 caracteres' : null,
-    },
-    {
-      id: 'email',
-      type: 'email',
-      question: '¿Cuál es tu correo?',
-      placeholder: 'ejemplo@correo.com',
-      validation: (val) => {
-        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return regex.test(val) ? null : 'Ingresa un correo electrónico válido';
-      },
+      question: 'Nombre',
+      placeholder: 'Nombre completo',
+      validation: (val) => (!val || val.length < 2) ? 'Ingresa tu nombre' : null,
     },
     {
       id: 'phone',
       type: 'tel',
-      question: '¿Cuál es tu teléfono o WhatsApp?',
+      question: 'Teléfono',
       placeholder: '+57 300 000 0000',
       validation: (val) => (!val || val.length < 7) ? 'Ingresa un número de teléfono válido' : null,
     },
     {
       id: 'city',
       type: 'text',
-      question: '¿De qué ciudad o país eres?',
-      placeholder: 'Ciudad, País',
-      validation: (val) => (!val || val.length < 2) ? 'Ingresa una ciudad o país válido' : null,
-    },
-    {
-      id: 'contact_reason',
-      type: 'options',
-      question: '¿Cuál es tu motivo de contacto?',
-      options: ['Reproductores', 'Saltos', 'Vientres', 'Compra de productos', 'Información general', 'Alianzas o prensa'],
-      validation: (val) => !val ? 'Selecciona una opción' : null,
+      question: 'Ciudad',
+      placeholder: 'Ciudad',
+      validation: (val) => (!val || val.length < 2) ? 'Ingresa tu ciudad' : null,
     },
     {
       id: 'message',
       type: 'textarea',
-      question: '¿Cuál es tu mensaje?',
-      placeholder: 'Escribe tu mensaje aquí...',
-      validation: (val) => (!val || val.length < 10) ? 'El mensaje debe tener al menos 10 caracteres' : null,
+      question: 'Comentario',
+      placeholder: 'Escribe tu comentario aquí...',
+      validation: (val) => (!val || val.length < 5) ? 'Ingresa tu comentario' : null,
     },
-    {
-      id: 'acceptTerms',
-      type: 'checkbox',
-      question: 'Términos de Privacidad',
-      placeholder: 'Acepto la política de privacidad y el tratamiento de mis datos.',
-      validation: (val) => !val ? 'Debes aceptar los términos para enviar el mensaje' : null,
-    }
   ];
 
   const handleSubmit = async (data) => {
@@ -72,10 +48,9 @@ const ContactForm = () => {
       .from('contacts')
       .insert([{
         full_name: data.full_name,
-        email: data.email,
         phone: data.phone,
         city: data.city,
-        contact_reason: data.contact_reason,
+        contact_reason: 'Registro y comentarios',
         message: data.message,
         source_page: 'contacto',
         status: 'nuevo'
@@ -100,13 +75,13 @@ const ContactForm = () => {
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="glass rounded-2xl p-10 text-center max-w-xl mx-auto shadow-xl"
+        className="border border-[#cdbb91] bg-[#fffdf7] p-10 text-center max-w-xl mx-auto"
       >
         <motion.div 
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ type: "spring", stiffness: 200, delay: 0.2 }}
-          className="w-20 h-20 bg-[#C8A94B]/20 rounded-full flex items-center justify-center mx-auto mb-6"
+          className="w-16 h-16 bg-[#C8A94B]/15 rounded-md flex items-center justify-center mx-auto mb-6"
         >
           <CheckCircle2 className="w-10 h-10 text-[#C8A94B]" />
         </motion.div>
@@ -118,7 +93,7 @@ const ContactForm = () => {
         </p>
         <Button 
           onClick={() => setSuccess(false)}
-          className="bg-[#C8A94B] hover:bg-[#C8A94B]/90 text-[#0B0B0B] font-bold rounded-2xl px-8"
+          className="font-bold px-8"
         >
           Enviar otro mensaje
         </Button>
@@ -128,7 +103,7 @@ const ContactForm = () => {
 
   return (
     <MultiStepForm 
-      title="Envíanos un Mensaje" 
+      title="Registro y comentarios" 
       steps={steps} 
       onSubmit={handleSubmit} 
       loading={loading} 

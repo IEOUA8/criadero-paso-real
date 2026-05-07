@@ -156,7 +156,7 @@ const BlogPostPage = () => {
             </div>
 
             <div className="lg:col-span-1">
-              <div className="sticky top-28 glass-card rounded-xl p-6">
+              <div className="sticky top-28 border border-[#cdbb91] bg-[#fffdf7] p-6">
                 <h3 className="font-playfair text-xl font-bold text-[#0B0B0B] mb-4 border-b pb-2">Artículos Relacionados</h3>
                 <div className="space-y-6">
                   {relatedPosts.length === 0 ? (
@@ -168,10 +168,10 @@ const BlogPostPage = () => {
                         className="group cursor-pointer"
                         onClick={() => navigate(`/blog/${related.slug || related.id}`)}
                       >
-                        <div className="aspect-video rounded-lg overflow-hidden mb-2">
+                        <div className="aspect-video overflow-hidden mb-2">
                           <img
                             src={related.imagen_portada}
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                            className="w-full h-full object-cover"
                             alt={related.título}
                           />
                         </div>

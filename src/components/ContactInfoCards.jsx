@@ -1,83 +1,81 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { MessageCircle, HelpCircle, Share2, Users, MapPin } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
-import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
 
 const ContactInfoCards = () => {
-  const navigate = useNavigate();
-
-  const cards = [
+  const infoBlocks = [
     {
-      icon: MessageCircle,
       title: '¡Queremos saber lo que piensas!',
-      description: 'Tu opinión es invaluable para nosotros. Comparte tus sugerencias, experiencias o cualquier comentario que nos ayude a mejorar.',
-      buttonText: 'Enviar Feedback',
-      action: () => window.location.href = 'mailto:hola@criaderopasoreal.com?subject=Feedback - Criadero Paso Real'
+      content: (
+        <>
+          Si encuentras alguna inconsistencia, error o tienes alguna duda respecto a la informacion disponible en nuestra pagina web, por favor comunicate a{' '}
+          <a href="mailto:hola@criaderopasoreal.com" className="font-semibold text-[#7b5d22] hover:text-[#936f2d]">
+            hola@criaderopasoreal.com
+          </a>
+          .
+        </>
+      ),
     },
     {
-      icon: HelpCircle,
       title: '¿Tienes alguna pregunta?',
-      description: 'Consulta nuestra sección de preguntas frecuentes donde encontrarás respuestas sobre burros criollos, reproducción, compra y más.',
-      buttonText: 'Ver Preguntas Frecuentes',
-      action: () => navigate('/faq')
+      content: (
+        <>
+          Visita nuestra seccion de{' '}
+          <Link to="/faq" className="font-semibold text-[#7b5d22] hover:text-[#936f2d]">
+            preguntas frecuentes
+          </Link>
+          , en donde encontraras informacion relevante a nuestra oferta comercial y sobre la operatividad de nuestro criadero.
+        </>
+      ),
     },
     {
-      icon: Share2,
       title: '¿Quieres compartir tu historia criando Asnales o Mulares?',
-      description: 'Nos encantaría conocer tu experiencia en la cría. Tu historia puede inspirar y educar a otros criadores de la comunidad.',
-      buttonText: 'Compartir Historia',
-      action: () => window.location.href = 'mailto:hola@criaderopasoreal.com?subject=Mi Historia - Cría de Asnales/Mulares'
+      content: (
+        <>
+          Si eres amante y apasionado por la cria y cuidado de estas dos especies y deseas promulgar tu historia, nos encantaria publicarla en nuestra web y redes sociales. Comunicate con nosotros a traves del siguiente email{' '}
+          <a href="mailto:hola@criaderopasoreal.com" className="font-semibold text-[#7b5d22] hover:text-[#936f2d]">
+            hola@criaderopasoreal.com
+          </a>
+          .
+        </>
+      ),
     },
     {
-      icon: Users,
-      title: '¿Estás en la búsqueda de una comunidad de Cría de Asnales?',
-      description: 'Únete a nuestra comunidad en Facebook donde criadores comparten conocimientos, experiencias y se apoyan mutuamente.',
-      buttonText: 'Unirse a la Comunidad',
-      action: () => window.open('https://facebook.com/criaderopasoreal', '_blank', 'noopener,noreferrer')
+      title: '¿Estás en la búsqueda de una comunidad de Cria de Asnales?',
+      content: (
+        <>
+          Visita nuestra pagina en Facebook,{' '}
+          <a href="https://facebook.com/criaderopasoreal" target="_blank" rel="noopener noreferrer" className="font-semibold text-[#7b5d22] hover:text-[#936f2d]">
+            criaderopasoreal
+          </a>
+          , alli encontraras actualizaciones sobre el dia a dia en el criadero. Tambien podras interactuar con otros criadores de asnales de Colombia y el mundo y compartir experiencias.
+        </>
+      ),
     },
     {
-      icon: MapPin,
       title: '¿Quieres conocer más sobre nuestro Criadero?',
-      description: 'Agenda una visita guiada a nuestras instalaciones. Conoce nuestros animales, instalaciones y métodos de crianza responsable.',
-      buttonText: 'Agendar Visita',
-      action: () => window.location.href = 'mailto:hola@criaderopasoreal.com?subject=Solicitud de Visita - Criadero Paso Real'
-    }
+      content: (
+        <>
+          Siempre estamos abiertos a nuevas ideas y comentarios. Si quieres profundizar mas sobre nuestra forma de crianza y lo que hacemos puedes agendar una visita y conocer nuestra finca y los animales en ella. Cualquier comentario sera bien recibido en{' '}
+          <a href="mailto:hola@criaderopasoreal.com" className="font-semibold text-[#7b5d22] hover:text-[#936f2d]">
+            hola@criaderopasoreal.com
+          </a>
+          .
+        </>
+      ),
+    },
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {cards.map((card, index) => (
-        <motion.div
-          key={index}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: index * 0.1, duration: 0.3 }}
-          whileHover={{ scale: 1.05 }}
-          className="rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 bg-[#1A1A1A] border border-[#C8A94B]/25"
-        >
-          <div className="flex flex-col items-center text-center space-y-6">
-            <div className="w-20 h-20 bg-[#C8A94B]/20 rounded-full flex items-center justify-center border border-[#C8A94B]/25">
-              <card.icon className="w-10 h-10 text-[#C8A94B]" strokeWidth={2} />
-            </div>
-
-            <div className="space-y-3">
-              <h3 className="font-inter text-lg font-bold text-white leading-tight">
-                {card.title}
-              </h3>
-              <p className="font-inter text-sm text-[#d1d5db] leading-relaxed">
-                {card.description}
-              </p>
-            </div>
-
-            <Button
-              onClick={card.action}
-              className="w-full py-6 text-base"
-            >
-              {card.buttonText}
-            </Button>
-          </div>
-        </motion.div>
+    <div className="bg-white border border-[#e7dfc7] divide-y divide-[#e7dfc7]">
+      {infoBlocks.map((block) => (
+        <article key={block.title} className="px-5 py-5 md:px-7 md:py-6">
+          <h3 className="font-playfair text-xl md:text-2xl font-bold text-[#18140e] mb-2">
+            {block.title}
+          </h3>
+          <p className="text-[#514638] leading-relaxed text-sm md:text-base">
+            {block.content}
+          </p>
+        </article>
       ))}
     </div>
   );

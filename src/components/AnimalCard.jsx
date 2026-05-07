@@ -6,13 +6,13 @@ const AnimalCard = ({ animal }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="glass-card rounded-2xl p-5">
+    <div className="border border-[#cdbb91] bg-[#fffdf7] p-5">
       {/* Animal Image */}
-      <div className="w-full h-[300px] overflow-hidden rounded-lg mb-4">
+      <div className="w-full h-[300px] overflow-hidden mb-4">
         <img
           src={animal.imagen || animal.fotos?.[0]}
           alt={animal.nombre}
-          className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+          className="w-full h-full object-cover"
         />
       </div>
 
@@ -31,7 +31,7 @@ const AnimalCard = ({ animal }) => {
         onClick={() => navigate(`/venta/${animal.id}`)}
         className="w-full py-2.5"
       >
-        Ver Detalles
+        Ver ficha
       </Button>
     </div>
   );

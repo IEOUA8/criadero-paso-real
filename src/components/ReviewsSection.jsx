@@ -56,7 +56,7 @@ const ReviewsSection = () => {
   ];
 
   return (
-    <section className="bg-[#0B0B0B] py-[60px] md:py-[80px] lg:py-[100px] relative overflow-hidden">
+    <section className="bg-[#0B0B0B] py-[42px] md:py-[56px] lg:py-[70px] relative overflow-hidden">
       <div className="absolute inset-0 bg-iron-pattern opacity-5 pointer-events-none"></div>
       
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -75,20 +75,20 @@ const ReviewsSection = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {reviews.map((review, index) => (
+          {reviews.slice(0, 3).map((review, index) => (
             <motion.div
               key={review.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="glass-dark rounded-2xl p-6 hover:shadow-2xl hover:shadow-[#C8A94B]/20 transition-smooth group"
+              className="border border-[#C8A94B]/30 bg-[#101010] p-6 transition-smooth"
             >
               <div className="flex items-center gap-4 mb-4">
                 <img
                   src={review.photo}
                   alt={review.name}
-                  className="w-12 h-12 rounded-full object-cover border-2 border-[#C8A94B]/50"
+                  className="w-12 h-12 object-cover border-2 border-[#C8A94B]/50"
                   loading="lazy"
                 />
                 <div className="flex-1">
@@ -127,7 +127,7 @@ const ReviewsSection = () => {
         >
           <Button
             onClick={() => window.open('https://www.google.com/maps/search/?api=1&query=Criadero+Paso+Real', '_blank')}
-            className="bg-[#C8A94B] hover:bg-[#C8A94B]/90 text-[#0B0B0B] font-bold px-8 py-6 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-smooth"
+            className="font-bold px-8 py-6"
           >
             <ExternalLink className="w-5 h-5 mr-2" />
             Ver todas las reseñas

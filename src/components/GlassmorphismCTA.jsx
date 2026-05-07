@@ -21,7 +21,7 @@ const GlassmorphismCTA = () => {
       <div className="absolute inset-0 bg-black/40"></div>
       
       <div className="relative max-w-4xl mx-auto px-4 z-10">
-        <div className="backdrop-blur-md bg-white/10 border border-white/20 p-10 md:p-16 rounded-2xl shadow-2xl text-center">
+        <div className="bg-black/55 border border-white/25 p-10 md:p-16 text-center">
           <h2 className="font-playfair text-3xl md:text-5xl font-bold text-white mb-6 drop-shadow-md">
             Eleve la genética de su criadero
           </h2>
@@ -31,16 +31,16 @@ const GlassmorphismCTA = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
               onClick={handleContact}
-              className="bg-[#C8A94B] hover:bg-[#C8A94B]/90 text-black font-semibold text-lg py-6 px-8 rounded-lg shadow-lg hover:shadow-xl transition-all"
+              className="font-semibold text-lg py-6 px-8"
             >
               Contactar Asesor
             </Button>
             <Button 
               variant="outline"
               onClick={handleContact}
-              className="bg-transparent border-white text-white hover:bg-white/20 text-lg py-6 px-8 rounded-lg shadow-lg backdrop-blur-sm transition-all"
+              className="bg-transparent border-white text-white hover:bg-white/15 text-lg py-6 px-8"
             >
-              Solicitar Catálogo PDF
+              Solicitar información
             </Button>
           </div>
         </div>

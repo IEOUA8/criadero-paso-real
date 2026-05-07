@@ -20,21 +20,21 @@ const ProductTemplate = ({ product, type = 'animal' }) => {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-lg border border-[#C8A94B]/20 overflow-hidden flex flex-col h-full group">
+    <div className="bg-[#fffdf7] border border-[#cdbb91] overflow-hidden flex flex-col h-full group">
       <div className="relative aspect-[4/3] overflow-hidden">
         <img 
           src={product.fotos?.[0] || product.image || 'https://images.unsplash.com/photo-1599053581540-248ea75b59cb'} 
           alt={product.nombre || product.title} 
-          className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+          className="w-full h-full object-cover"
         />
         {product.estado && (
-          <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-bold text-black border border-[#C8A94B]/30 shadow-md">
+          <div className="absolute top-4 right-4 bg-[#fffdf7] px-3 py-1 text-sm font-bold text-black border border-[#C8A94B]/30">
             {product.estado}
           </div>
         )}
       </div>
 
-      <div className="p-6 md:p-8 flex flex-col flex-grow bg-white relative">
+      <div className="p-6 md:p-8 flex flex-col flex-grow bg-[#fffdf7] relative">
         <div className="absolute top-0 right-0 w-32 h-32 bg-iron-pattern pointer-events-none opacity-5"></div>
         
         <h3 className="font-playfair text-2xl font-bold text-[#0B0B0B] mb-2">{product.nombre || product.title}</h3>
@@ -57,14 +57,14 @@ const ProductTemplate = ({ product, type = 'animal' }) => {
         <div className="flex flex-col gap-3 mt-auto">
           <Button 
             onClick={handleCheckout}
-            className="w-full bg-[#0B0B0B] hover:bg-[#374151] text-white font-bold rounded-lg py-6"
+            className="w-full font-bold py-6"
           >
             Adquirir
           </Button>
           <Button 
             onClick={() => window.open(`https://wa.me/573208909198?text=Hola, estoy interesado en ${product.nombre || product.title}`, '_blank')}
             variant="outline"
-            className="w-full border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white font-bold rounded-lg py-6"
+            className="w-full border-[#25D366] text-[#1f8f4d] hover:bg-[#eaf7ef] font-bold py-6"
           >
             <MessageCircle className="w-5 h-5 mr-2" />
             Consultar por WhatsApp

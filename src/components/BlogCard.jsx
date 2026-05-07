@@ -22,14 +22,14 @@ const BlogCard = ({ post, index = 0 }) => {
       transition={{ delay: index * 0.1 }}
     >
       <Card
-        className="group overflow-hidden glass-card cursor-pointer"
+        className="group overflow-hidden border-[#cdbb91] bg-[#fffdf7] shadow-none cursor-pointer"
         onClick={() => navigate(`/blog/${post.slug}`)}
       >
         <div className="relative overflow-hidden aspect-[16/9]">
           <img
             src={post.imagen_portada}
             alt={post.título}
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            className="w-full h-full object-cover"
           />
         </div>
         <CardContent className="p-6">

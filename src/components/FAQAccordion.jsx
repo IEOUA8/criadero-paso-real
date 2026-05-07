@@ -4,10 +4,10 @@ import { ChevronDown } from 'lucide-react';
 
 const FAQAccordion = ({ question, answer, isOpen, onToggle }) => {
   return (
-    <div className="glass-card rounded-2xl p-5 mb-4 transition-accordion max-[389px]:p-4">
+    <div className="border border-[#cdbb91] bg-[#fffdf7] p-5 mb-4 transition-accordion max-[389px]:p-4">
       <button
         onClick={onToggle}
-        className="w-full flex items-start justify-between gap-4 text-left hover:bg-white/60 rounded-xl transition-accordion cursor-pointer p-1"
+        className="w-full flex items-start justify-between gap-4 text-left hover:bg-[#f4efe4] transition-accordion cursor-pointer p-1"
       >
         <h3 className="font-inter text-base font-bold text-[#0B0B0B] flex-1 max-[389px]:text-[0.95rem]">
           {question}

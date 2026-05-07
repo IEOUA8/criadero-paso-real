@@ -110,7 +110,7 @@ const VientrDetailPage = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/10" />
         <div className="relative z-10 max-w-6xl mx-auto px-4 h-full flex items-end pb-14">
           <div>
-            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/15 border border-white/30 text-white mb-4">
+            <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-black/45 border border-white/30 text-white mb-4">
               <ShieldCheck className="w-4 h-4 text-[#C8A94B]" />
               <span className="text-xs uppercase tracking-[0.14em]">Vientre {statusLabel}</span>
             </span>
@@ -134,15 +134,15 @@ const VientrDetailPage = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="lg:col-span-7 glass-card rounded-2xl p-4 md:p-6"
+              className="lg:col-span-7 border border-[#cdbb91] bg-[#fffdf7] p-4 md:p-6"
             >
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {vientre.fotos.map((foto, idx) => (
-                  <div key={`${foto}-${idx}`} className="aspect-[4/3] overflow-hidden rounded-xl">
+                  <div key={`${foto}-${idx}`} className="aspect-[4/3] overflow-hidden">
                     <img
                       src={foto}
                       alt={`${vientre.nombre} foto ${idx + 1}`}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover"
                     />
                   </div>
                 ))}
@@ -155,7 +155,7 @@ const VientrDetailPage = () => {
               transition={{ delay: 0.1 }}
               className="lg:col-span-5 space-y-6"
             >
-              <div className="glass-card rounded-2xl p-6">
+              <div className="border border-[#cdbb91] bg-[#fffdf7] p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <Dna className="w-6 h-6 text-[#C8A94B]" />
                   <h2 className="font-playfair text-2xl font-bold text-[#0B0B0B]">Perfil Reproductivo</h2>
@@ -163,7 +163,7 @@ const VientrDetailPage = () => {
                 <p className="premium-description leading-relaxed">{vientre.descripcion}</p>
               </div>
 
-              <div className="glass-card rounded-2xl p-6">
+              <div className="border border-[#cdbb91] bg-[#fffdf7] p-6">
                 <div className="flex items-center gap-3 mb-4">
                   <TableProperties className="w-6 h-6 text-[#C8A94B]" />
                   <h3 className="font-playfair text-2xl font-bold text-[#0B0B0B]">Ficha Técnica</h3>

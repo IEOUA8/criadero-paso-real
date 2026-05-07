@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Check, ChevronRight, Sparkles, BadgeCheck } from 'lucide-react';
+import { Check, ChevronRight, BadgeCheck } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import Header from '@/components/Header';
@@ -74,10 +74,10 @@ const VientresPage = () => {
 
       {/* Hero Section */}
       <div className="pt-20">
-        <HeroSection
-          title="Vientres Productivos"
-          description="Burras seleccionadas para programas de reproducción con excelente historial productivo"
-          buttonText="Explorar Vientres"
+          <HeroSection
+            title="Vientres Productivos"
+            description="Burras seleccionadas para programas de reproducción con excelente historial productivo"
+          buttonText="Ver vientres"
           buttonLink="#vientres"
           backgroundImage="https://images.unsplash.com/photo-1673872800723-df87b2c829d1"
           textColor="white"
@@ -86,21 +86,18 @@ const VientresPage = () => {
       </div>
 
       {/* Main Content */}
-      <div className="premium-page-bg pb-16 md:pb-24 max-[389px]:pb-12">
+      <div className="premium-page-bg pb-10 md:pb-14 max-[389px]:pb-8">
         
         {/* Editorial Intro */}
-        <div id="vientres" className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 max-[389px]:px-3 max-[389px]:py-9">
+        <div id="vientres" className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-10 max-[389px]:px-3 max-[389px]:py-7">
           <motion.div 
             variants={fadeInUp}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="premium-glass rounded-3xl p-6 md:p-12 max-[389px]:rounded-2xl max-[389px]:p-4"
+            className="border-y border-[#cdbb91] py-6 md:py-8 max-[389px]:py-5"
           >
-            <div className="inline-flex items-center gap-2 mb-4 px-3 py-1.5 rounded-full bg-white/75 border border-white/80">
-              <Sparkles className="w-4 h-4 text-[#C8A94B]" />
-              <span className="premium-kicker !tracking-[0.12em] max-[389px]:!text-[10px] max-[389px]:!tracking-[0.09em]">Programa de vientres</span>
-            </div>
+            <p className="premium-kicker mb-4 max-[389px]:!text-[10px] max-[389px]:!tracking-[0.09em]">Programa de vientres</p>
             <p className="font-inter text-base md:text-lg premium-description text-justify-desktop mb-6 max-[389px]:text-[0.95rem]">
               En Criadero Paso Real entendemos que la grandeza de cualquier programa asinino comienza en un solo lugar: los vientres. Nuestras burras criollas colombianas representan la esencia de nuestra filosofía de cría: animales criados en libertad, desarrollados exclusivamente a pasto, sal mineralizada y agua, con una rusticidad que se hereda generación tras generación.
             </p>
@@ -133,7 +130,7 @@ const VientresPage = () => {
           </motion.div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 md:space-y-16 max-[389px]:px-3">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 md:space-y-10 max-[389px]:px-3">
           
           {/* Mares Grid */}
           <div>
@@ -148,7 +145,7 @@ const VientresPage = () => {
                 <LoadingSpinner />
               </div>
             ) : vientres.length === 0 ? (
-              <div className="glass-card rounded-2xl p-10 text-center">
+              <div className="glass-card rounded-md p-10 text-center">
                 <h3 className="font-playfair text-3xl font-bold text-[#0B0B0B] mb-2">No hay vientres publicados aún</h3>
                 <p className="premium-description">Puedes administrarlos desde el panel de `Vientres`.</p>
               </div>
@@ -163,20 +160,20 @@ const VientresPage = () => {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
                 >
-                  <Card className="overflow-hidden glass-card transition-all duration-300 transform hover:-translate-y-2 rounded-xl flex flex-col h-full">
+                  <Card className="overflow-hidden border-[#cdbb91] bg-[#fffdf7] shadow-none rounded-md flex flex-col h-full">
                     <div className="aspect-[4/3] overflow-hidden relative">
                       <img
                         src={vientre.fotos[0]}
                         alt={vientre.nombre}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                        className="w-full h-full object-cover"
                       />
                       <div className="absolute top-4 right-4">
-                        <span className={`px-4 py-1.5 rounded-full text-sm font-bold shadow-md ${
+                        <span className={`px-4 py-1.5 text-sm font-bold border ${
                           vientre.estado_reproductivo === 'activo'
-                            ? 'bg-[#10B981] text-white'
+                            ? 'bg-[#365b38] text-white border-[#365b38]'
                             : vientre.estado_reproductivo === 'en_descanso'
-                            ? 'bg-[#F59E0B] text-white'
-                            : 'bg-[#6B7280] text-white'
+                            ? 'bg-[#936f2d] text-white border-[#936f2d]'
+                            : 'bg-[#514638] text-white border-[#514638]'
                         }`}>
                           {vientre.estado_reproductivo === 'activo'
                             ? 'Disponible'
@@ -188,7 +185,7 @@ const VientresPage = () => {
                     </div>
                     <CardContent className="p-6 sm:p-7 md:p-8 flex flex-col flex-grow max-[389px]:p-4">
                       <h3 className="font-playfair text-2xl md:text-[28px] font-bold text-[#0B0B0B] mb-1 max-[389px]:text-[1.45rem]">{vientre.nombre}</h3>
-                      <p className="text-[#C8A94B] font-semibold mb-4 text-sm uppercase tracking-wide">
+                      <p className="text-[#7b5d22] font-semibold mb-4 text-sm uppercase tracking-wide">
                         Edad: {vientre.edad ? `${vientre.edad} años` : 'No registrada'}
                       </p>
                       <p className="font-inter premium-description text-justify-desktop mb-6 md:mb-8 flex-grow max-[389px]:text-[0.92rem]">{vientre.descripcion}</p>
@@ -213,7 +210,7 @@ const VientresPage = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="premium-glass-strong border border-[#C8A94B]/30 p-6 md:p-16 rounded-2xl text-center max-[389px]:p-4"
+            className="border border-[#cdbb91] bg-[#fffdf7] p-6 md:p-16 text-center max-[389px]:p-4"
           >
             <h2 className="premium-title text-2xl md:text-[40px] font-bold mb-5 md:mb-6 max-[389px]:text-[1.5rem]">
               El corazón genético de nuestra cría

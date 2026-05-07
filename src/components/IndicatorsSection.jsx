@@ -27,10 +27,10 @@ const IndicatorsSection = () => {
         return (
           <div
             key={index}
-            className="glass-card rounded-2xl p-5 md:p-8 text-center group hover:-translate-y-1 max-[389px]:p-4"
+            className="border border-[#cdbb91] bg-[#fffdf7] p-5 md:p-8 text-center max-[389px]:p-4"
           >
             <div className="flex justify-center mb-4">
-              <div className="premium-icon-chip transition-transform duration-300 group-hover:scale-110">
+              <div className="premium-icon-chip">
                 <Icon className="w-8 h-8 md:w-10 md:h-10 text-[#C8A94B]" />
               </div>
             </div>

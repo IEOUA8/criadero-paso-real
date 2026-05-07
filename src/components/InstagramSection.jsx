@@ -50,7 +50,7 @@ const InstagramSection = () => {
   ];
 
   return (
-    <section className="bg-[#F4F5F7] py-[60px] md:py-[80px] lg:py-[100px]">
+    <section className="premium-page-bg py-[42px] md:py-[56px] lg:py-[70px]">
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -58,7 +58,7 @@ const InstagramSection = () => {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="font-playfair text-3xl md:text-4xl lg:text-5xl font-bold text-[#C8A94B] mb-4">
+          <h2 className="font-playfair text-3xl md:text-4xl lg:text-5xl font-bold text-[#18140e] mb-4">
             Síguenos en Instagram
           </h2>
           <p className="text-gray-700 text-base md:text-lg max-w-2xl mx-auto">
@@ -77,14 +77,14 @@ const InstagramSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="group relative block overflow-hidden rounded-xl shadow-md hover:shadow-lg transition-smooth"
+              className="group relative block overflow-hidden border border-[#cdbb91] transition-smooth"
             >
               <div className="relative aspect-square overflow-hidden">
                 <img
                   src={post.imageUrl}
                   alt={post.caption}
                   loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="w-full h-full object-cover"
                 />
                 
                 {/* Overlay on hover */}
@@ -113,7 +113,7 @@ const InstagramSection = () => {
         >
           <Button
             onClick={() => window.open('https://instagram.com/CriaderopasoReal', '_blank')}
-            className="bg-[#C8A94B] hover:bg-[#C8A94B]/90 text-[#0B0B0B] font-bold px-8 py-6 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-smooth"
+            className="font-bold px-8 py-6"
           >
             <InstagramIcon className="w-5 h-5 mr-2" />
             Ver más en Instagram

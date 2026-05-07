@@ -43,14 +43,12 @@ const Footer = () => {
 
   return (
     <>
-      <footer className="relative overflow-hidden bg-[#0f1115] text-white py-[60px] md:py-[80px] border-t border-[#C8A94B]/30">
+      <footer className="relative overflow-hidden bg-[#0f1115] text-white py-[44px] md:py-[58px] border-t border-[#C8A94B]/30">
         <div className="absolute inset-0 opacity-40 bg-iron-pattern pointer-events-none"></div>
-        <div className="absolute -top-32 -left-20 w-72 h-72 rounded-full bg-[#C8A94B]/20 blur-3xl pointer-events-none"></div>
-        <div className="absolute -bottom-36 right-0 w-80 h-80 rounded-full bg-white/10 blur-3xl pointer-events-none"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12 relative z-10">
             {/* Brand */}
-            <div className="md:col-span-2 lg:col-span-1 rounded-2xl p-6 bg-white/10 border border-white/20 backdrop-blur-xl shadow-lg">
+            <div className="md:col-span-2 lg:col-span-1 border-t border-[#C8A94B]/35 pt-6">
               <div className="flex items-center gap-3 mb-4">
                 <BrandMark className="w-10 h-10 text-[#C8A94B]" />
                 <h3 className="font-playfair text-2xl font-bold text-[#C8A94B] tracking-[0.08em] uppercase">
@@ -65,7 +63,7 @@ const Footer = () => {
                   href="https://instagram.com/criaderopasoreal"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#C8A94B] hover:scale-110 transition-smooth"
+                  className="text-[#C8A94B] hover:text-[#F1DE9A] transition-smooth"
                   aria-label="Instagram"
                 >
                   <Instagram className="w-7 h-7" />
@@ -74,7 +72,7 @@ const Footer = () => {
                   href="https://facebook.com/criaderopasoreal"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#C8A94B] hover:scale-110 transition-smooth"
+                  className="text-[#C8A94B] hover:text-[#F1DE9A] transition-smooth"
                   aria-label="Facebook"
                 >
                   <Facebook className="w-7 h-7" />
@@ -83,7 +81,7 @@ const Footer = () => {
                   href="https://youtube.com/@criaderopasoreal"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#C8A94B] hover:scale-110 transition-smooth"
+                  className="text-[#C8A94B] hover:text-[#F1DE9A] transition-smooth"
                   aria-label="YouTube"
                 >
                   <Youtube className="w-7 h-7" />
@@ -92,7 +90,7 @@ const Footer = () => {
                   href="https://wa.me/573208909198"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#C8A94B] hover:scale-110 transition-smooth"
+                  className="text-[#C8A94B] hover:text-[#F1DE9A] transition-smooth"
                   aria-label="WhatsApp"
                 >
                   <MessageCircle className="w-7 h-7" />
@@ -101,7 +99,7 @@ const Footer = () => {
             </div>
 
             {/* Quick Links */}
-            <div className="rounded-2xl p-6 bg-white/10 border border-white/20 backdrop-blur-xl shadow-lg">
+            <div className="border-t border-[#C8A94B]/35 pt-6">
               <h4 className="font-bold text-lg mb-4 text-[#C8A94B]">Enlaces Rápidos</h4>
               <ul className="space-y-3">
                 {quickLinks.map((link) => (
@@ -110,7 +108,7 @@ const Footer = () => {
                       to={link.path}
                       className="text-white hover:text-[#C8A94B] transition-smooth text-sm font-medium flex items-center group"
                     >
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#C8A94B] mr-2 group-hover:scale-125 transition-smooth"></span>
+                      <span className="w-1.5 h-1.5 bg-[#C8A94B] mr-2 transition-smooth"></span>
                       {link.name}
                     </Link>
                   </li>
@@ -120,7 +118,7 @@ const Footer = () => {
                     onClick={handleAccountNavigation}
                     className="text-white hover:text-[#C8A94B] transition-smooth text-sm font-medium flex items-center group mt-2"
                   >
-                    <User className="w-4 h-4 mr-2 text-[#C8A94B] group-hover:scale-110 transition-smooth" />
+                    <User className="w-4 h-4 mr-2 text-[#C8A94B] transition-smooth" />
                     {getAccountButtonText()}
                   </button>
                 </li>
@@ -128,11 +126,11 @@ const Footer = () => {
             </div>
 
             {/* Contact */}
-            <div className="rounded-2xl p-6 bg-white/10 border border-white/20 backdrop-blur-xl shadow-lg">
+            <div className="border-t border-[#C8A94B]/35 pt-6">
               <h4 className="font-bold text-lg mb-4 text-[#C8A94B]">Contacto</h4>
               <div className="space-y-4 text-sm">
                 <div className="flex items-start gap-3 group">
-                  <Mail className="w-5 h-5 text-[#C8A94B] mt-0.5 group-hover:scale-110 transition-smooth" />
+                  <Mail className="w-5 h-5 text-[#C8A94B] mt-0.5 transition-smooth" />
                   <a
                     href="mailto:hola@criaderopasoreal.com"
                     className="text-white hover:text-[#C8A94B] transition-smooth font-medium"
@@ -141,7 +139,7 @@ const Footer = () => {
                   </a>
                 </div>
                 <div className="flex items-start gap-3 group">
-                  <Phone className="w-5 h-5 text-[#C8A94B] mt-0.5 group-hover:scale-110 transition-smooth" />
+                  <Phone className="w-5 h-5 text-[#C8A94B] mt-0.5 transition-smooth" />
                   <a
                     href="https://wa.me/573208909198"
                     target="_blank"
@@ -155,18 +153,18 @@ const Footer = () => {
             </div>
 
             {/* Trust Badges */}
-            <div className="rounded-2xl p-6 bg-white/10 border border-white/20 backdrop-blur-xl shadow-lg">
+            <div className="border-t border-[#C8A94B]/35 pt-6">
               <h4 className="font-bold text-lg mb-4 text-[#C8A94B]">Garantías</h4>
               <div className="space-y-4">
                 <div className="flex items-center gap-3 text-sm text-white font-medium group">
-                  <Shield className="w-5 h-5 text-[#C8A94B] group-hover:scale-110 transition-smooth" />
+                  <Shield className="w-5 h-5 text-[#C8A94B] transition-smooth" />
                   <span>Compra segura y transparente</span>
                 </div>
                 <button 
                   onClick={() => setIsConditionsModalOpen(true)}
                   className="flex items-start gap-3 text-sm text-white hover:text-[#C8A94B] font-medium transition-smooth text-left group"
                 >
-                  <Truck className="w-5 h-5 text-[#C8A94B] mt-0.5 group-hover:scale-110 transition-smooth flex-shrink-0" />
+                  <Truck className="w-5 h-5 text-[#C8A94B] mt-0.5 transition-smooth flex-shrink-0" />
                   <span className="underline decoration-[#C8A94B]/50 underline-offset-4">Condiciones de Envío – Garantía de Compra</span>
                 </button>
               </div>

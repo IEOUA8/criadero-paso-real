@@ -79,10 +79,10 @@ const ProductDetailPage = () => {
   };
 
   const getEstadoBadgeColor = (estado) => {
-    if (estado === 'available' || estado === 'Disponible') return 'bg-[#10B981] text-white';
-    if (estado === 'negotiation' || estado === 'En negociación') return 'bg-[#F59E0B] text-white';
-    if (estado === 'sold' || estado === 'Vendido') return 'bg-[#EF4444] text-white';
-    return 'bg-gray-500 text-white';
+    if (estado === 'available' || estado === 'Disponible') return 'bg-[#365b38] text-white';
+    if (estado === 'negotiation' || estado === 'En negociación') return 'bg-[#936f2d] text-white';
+    if (estado === 'sold' || estado === 'Vendido') return 'bg-[#7f1d1d] text-white';
+    return 'bg-[#514638] text-white';
   };
 
   const getEstadoLabel = (estado) => {
@@ -191,16 +191,16 @@ const ProductDetailPage = () => {
             className="flex items-center text-[#6B7280] hover:text-[#C8A94B] transition-colors mb-8 group font-medium"
           >
             <ArrowLeft className="w-5 h-5 mr-2 transform group-hover:-translate-x-1 transition-transform" />
-            Volver al catálogo
+            Volver a ventas
           </button>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             
             {/* Image Gallery Section */}
             <div className="lg:col-span-7">
-              <div className="bg-white rounded-lg p-4 shadow-sm">
+              <div className="bg-[#fffdf7] border border-[#cdbb91] p-4">
                 {/* Main Image */}
-                <div className="relative w-full h-[600px] mb-4 overflow-hidden rounded-lg bg-gray-100">
+                <div className="relative w-full h-[600px] mb-4 overflow-hidden bg-gray-100">
                   <motion.img
                     key={selectedImageIndex}
                     initial={{ opacity: 0 }}
@@ -214,14 +214,14 @@ const ProductDetailPage = () => {
                   {/* Navigation Arrows */}
                   <button
                     onClick={handlePrevImage}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110"
+                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-[#fffdf7] hover:bg-white p-3 border border-[#cdbb91] transition-colors duration-200"
                     aria-label="Imagen anterior"
                   >
                     <ChevronLeft className="w-6 h-6 text-[#0B0B0B]" />
                   </button>
                   <button
                     onClick={handleNextImage}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-[#fffdf7] hover:bg-white p-3 border border-[#cdbb91] transition-colors duration-200"
                     aria-label="Imagen siguiente"
                   >
                     <ChevronRight className="w-6 h-6 text-[#0B0B0B]" />
@@ -234,9 +234,9 @@ const ProductDetailPage = () => {
                     <button
                       key={index}
                       onClick={() => handleThumbnailClick(index)}
-                      className={`relative w-full h-[150px] overflow-hidden rounded-lg border-2 transition-all duration-200 hover:border-[#C8A94B] ${
+                      className={`relative w-full h-[150px] overflow-hidden border-2 transition-colors duration-200 hover:border-[#936f2d] ${
                         selectedImageIndex === index 
-                          ? 'border-[#C8A94B] ring-2 ring-[#C8A94B] ring-offset-2' 
+                          ? 'border-[#936f2d]' 
                           : 'border-gray-200'
                       }`}
                     >
@@ -253,14 +253,14 @@ const ProductDetailPage = () => {
 
             {/* Animal Info Section */}
             <div className="lg:col-span-5">
-              <div className="bg-white rounded-lg p-6 md:p-8 shadow-sm sticky top-28">
+              <div className="bg-[#fffdf7] border border-[#cdbb91] p-6 md:p-8 sticky top-28">
                 
                 {/* Name and Estado Badge */}
                 <div className="flex items-start justify-between mb-4">
                   <h1 className="font-playfair text-3xl md:text-4xl font-bold text-[#0B0B0B]">
                     {animal.nombre}
                   </h1>
-                  <Badge className={`${getEstadoBadgeColor(animal.estado)} font-bold px-3 py-1 ml-2`}>
+                  <Badge className={`${getEstadoBadgeColor(animal.estado)} font-bold px-3 py-1 ml-2 rounded-sm`}>
                     {getEstadoLabel(animal.estado)}
                   </Badge>
                 </div>
@@ -285,31 +285,31 @@ const ProductDetailPage = () => {
                     Ficha Técnica
                   </h2>
                   <div className="grid grid-cols-2 gap-3">
-                    <div className="bg-gray-50 p-3 rounded-lg">
+                    <div className="bg-[#f4efe4] border border-[#ded2b8] p-3">
                       <span className="block text-xs text-gray-500 uppercase tracking-wide mb-1">Sexo</span>
                       <span className="font-medium text-gray-900">{animal.sexo}</span>
                     </div>
-                    <div className="bg-gray-50 p-3 rounded-lg">
+                    <div className="bg-[#f4efe4] border border-[#ded2b8] p-3">
                       <span className="block text-xs text-gray-500 uppercase tracking-wide mb-1">Edad</span>
                       <span className="font-medium text-gray-900">{animal.edad} años</span>
                     </div>
-                    <div className="bg-gray-50 p-3 rounded-lg col-span-2">
+                    <div className="bg-[#f4efe4] border border-[#ded2b8] p-3 col-span-2">
                       <span className="block text-xs text-gray-500 uppercase tracking-wide mb-1">Raza</span>
                       <span className="font-medium text-gray-900">{animal.raza}</span>
                     </div>
-                    <div className="bg-gray-50 p-3 rounded-lg">
+                    <div className="bg-[#f4efe4] border border-[#ded2b8] p-3">
                       <span className="block text-xs text-gray-500 uppercase tracking-wide mb-1">Color</span>
                       <span className="font-medium text-gray-900">{animal.color}</span>
                     </div>
-                    <div className="bg-gray-50 p-3 rounded-lg">
+                    <div className="bg-[#f4efe4] border border-[#ded2b8] p-3">
                       <span className="block text-xs text-gray-500 uppercase tracking-wide mb-1">Alzada</span>
                       <span className="font-medium text-gray-900">{animal.alzada} cm</span>
                     </div>
-                    <div className="bg-gray-50 p-3 rounded-lg">
+                    <div className="bg-[#f4efe4] border border-[#ded2b8] p-3">
                       <span className="block text-xs text-gray-500 uppercase tracking-wide mb-1">Criador</span>
                       <span className="font-medium text-gray-900 text-sm">{animal.criador}</span>
                     </div>
-                    <div className="bg-gray-50 p-3 rounded-lg">
+                    <div className="bg-[#f4efe4] border border-[#ded2b8] p-3">
                       <span className="block text-xs text-gray-500 uppercase tracking-wide mb-1">Propietario</span>
                       <span className="font-medium text-gray-900 text-sm">{animal.propietario}</span>
                     </div>
@@ -319,7 +319,7 @@ const ProductDetailPage = () => {
                 {/* Price */}
                 {animal.precio && (
                   <div className="mb-6 pb-6 border-t border-gray-200 pt-6">
-                    <p className="text-3xl font-bold text-[#C8A94B]">
+                    <p className="text-3xl font-bold text-[#936f2d]">
                       {formatPrice(animal.precio)}
                     </p>
                     <p className="text-sm text-gray-500 mt-1">Precio incluye documentación completa</p>
@@ -329,7 +329,7 @@ const ProductDetailPage = () => {
                 {/* Comprar Button */}
                 <Button
                   onClick={handleBuyClick}
-                  className="w-full bg-[#C8A94B] hover:bg-[#B8941B] text-white font-bold rounded-lg px-6 py-4 text-lg flex items-center justify-center gap-2 transition-all duration-300 shadow-md hover:shadow-lg"
+                  className="w-full px-6 py-4 text-lg flex items-center justify-center gap-2"
                 >
                   <ShoppingCart className="w-5 h-5" />
                   Comprar

@@ -24,12 +24,12 @@ const ProductCard = ({ product, index = 0 }) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1 }}
     >
-      <Card className="group overflow-hidden glass-card">
+      <Card className="group overflow-hidden border-[#cdbb91] bg-[#fffdf7] shadow-none">
         <div className="relative overflow-hidden aspect-[4/3]">
           <img
             src={mainImage}
             alt={product.nombre}
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            className="w-full h-full object-cover"
           />
           <div className="absolute top-4 right-4">
             <Badge variant={product.estado === 'Disponible' ? 'gold' : 'secondary'}>

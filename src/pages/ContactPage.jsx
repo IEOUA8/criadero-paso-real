@@ -23,12 +23,12 @@ const ContactPage = () => {
 
       <Header />
 
-      <div className="min-h-screen bg-white pt-32 pb-24">
+      <div className="min-h-screen premium-page-bg pt-28 pb-14">
         <div className="max-w-7xl mx-auto px-4">
           <motion.div 
             initial={{ opacity: 0, y: 20 }} 
             animate={{ opacity: 1, y: 0 }} 
-            className="text-center mb-16 pt-8"
+            className="text-center mb-10 pt-6"
           >
             <h1 className="font-playfair text-5xl md:text-6xl font-bold text-[#0B0B0B] mb-6">
               Contáctenos
@@ -40,21 +40,8 @@ const ContactPage = () => {
           </motion.div>
 
           {/* Contact Info Cards Section */}
-          <section className="bg-[#f8f6ef] border border-[#E7DFC7] rounded-3xl py-20 md:py-24 lg:py-28 px-6 md:px-10 lg:px-12 mb-20 md:mb-24 lg:mb-28 relative overflow-hidden shadow-xl">
+          <section className="bg-white border border-[#cdbb91] p-4 md:p-6 lg:p-8 mb-10 md:mb-12 lg:mb-14 relative overflow-hidden">
             <div className="relative z-10">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="text-center mb-12 md:mb-16"
-              >
-                <h2 className="font-playfair text-3xl md:text-4xl font-bold text-[#0B0B0B] mb-4">
-                  ¿Cómo podemos ayudarte?
-                </h2>
-                <p className="text-[#374151] text-base md:text-lg max-w-3xl mx-auto">
-                  Explora las diferentes formas en que puedes conectarte con Criadero Paso Real
-                </p>
-              </motion.div>
-              
               <ContactInfoCards />
             </div>
           </section>
@@ -67,14 +54,14 @@ const ContactPage = () => {
               transition={{ delay: 0.2 }}
               className="lg:col-span-4 space-y-6"
             >
-              <div className="bg-white rounded-2xl p-8 shadow-xl border border-[#C8A94B]/20">
+              <div className="bg-[#fffdf7] p-8 border border-[#cdbb91]">
                 <h2 className="font-playfair text-2xl font-bold text-[#0B0B0B] mb-8">
                   Información Directa
                 </h2>
                 
                 <div className="space-y-8">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-[#C8A94B]/10 rounded-full flex items-center justify-center flex-shrink-0 transition-transform hover:scale-110">
+                    <div className="w-12 h-12 bg-[#f4efe4] border border-[#d7c79f] rounded-md flex items-center justify-center flex-shrink-0">
                       <Mail className="w-6 h-6 text-[#C8A94B]" />
                     </div>
                     <div>
@@ -86,7 +73,7 @@ const ContactPage = () => {
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-[#25D366]/10 rounded-full flex items-center justify-center flex-shrink-0 transition-transform hover:scale-110">
+                    <div className="w-12 h-12 bg-[#eaf7ef] border border-[#b9ddc5] rounded-md flex items-center justify-center flex-shrink-0">
                       <MessageSquare className="w-6 h-6 text-[#25D366]" />
                     </div>
                     <div>
@@ -98,7 +85,7 @@ const ContactPage = () => {
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-blue-500/10 rounded-full flex items-center justify-center flex-shrink-0 transition-transform hover:scale-110">
+                    <div className="w-12 h-12 bg-[#eef3f8] border border-[#c7d3df] rounded-md flex items-center justify-center flex-shrink-0">
                       <Phone className="w-6 h-6 text-blue-600" />
                     </div>
                     <div>

@@ -15,7 +15,7 @@ const OrderSummary = ({ items, total }) => {
   const finalTotal = total !== undefined ? total : subtotal + taxes + shipping;
 
   return (
-    <div className="glass-card rounded-2xl p-6 md:p-8 sticky top-24">
+    <div className="border border-[#cdbb91] bg-[#fffdf7] p-6 md:p-8 sticky top-24">
       <h2 className="font-inter text-lg font-bold text-[#0B0B0B] mb-6">
         Resumen de compra
       </h2>
